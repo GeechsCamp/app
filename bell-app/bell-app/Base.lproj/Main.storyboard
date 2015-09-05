@@ -20,76 +20,154 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPq-DO-Bom">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.9663194676454685" blue="0.75529822021596282" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9Zl-j5-lag"/>
+                                    <constraint firstAttribute="height" constant="50" id="HY9-1I-co3"/>
+                                    <constraint firstAttribute="height" constant="30" id="R2K-rK-EQS"/>
+                                </constraints>
                                 <state key="normal" title="楽器1">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9Zl-j5-lag"/>
+                                        <exclude reference="HY9-1I-co3"/>
+                                        <exclude reference="R2K-rK-EQS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9Zl-j5-lag"/>
+                                        <include reference="HY9-1I-co3"/>
+                                        <exclude reference="R2K-rK-EQS"/>
+                                    </mask>
+                                </variation>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoH-0p-TVa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-X6-6yo">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="楽器2">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rka-eP-Zad">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.96631946759999998" blue="0.75529822020000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NG2-dn-B1E"/>
+                                    <constraint firstAttribute="width" constant="50" id="RGk-DB-71s"/>
+                                    <constraint firstAttribute="height" constant="30" id="wcH-Z7-GzE"/>
+                                </constraints>
                                 <state key="normal" title="楽器3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="RGk-DB-71s"/>
+                                        <exclude reference="NG2-dn-B1E"/>
+                                        <exclude reference="wcH-Z7-GzE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="RGk-DB-71s"/>
+                                        <include reference="NG2-dn-B1E"/>
+                                        <exclude reference="wcH-Z7-GzE"/>
+                                    </mask>
+                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zh-F3-yli">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.77657331333189739" green="1" blue="0.96182722152570888" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="JVX-oJ-x3q"/>
+                                    <constraint firstAttribute="height" constant="50" id="z7s-bd-Doc"/>
+                                </constraints>
                                 <state key="normal" title="設定">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JVX-oJ-x3q"/>
+                                        <exclude reference="z7s-bd-Doc"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="313" y="248" width="50" height="50"/>
+                                    <mask key="constraints">
+                                        <include reference="JVX-oJ-x3q"/>
+                                        <include reference="z7s-bd-Doc"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="0sw-cd-puc" kind="modal" id="9az-lC-oAw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-QR-ctA">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.96631946759999998" blue="0.75529822020000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="167-eM-Dhd"/>
+                                    <constraint firstAttribute="width" constant="50" id="Mee-ia-F8f"/>
+                                    <constraint firstAttribute="height" constant="50" id="k1X-jE-pwn"/>
+                                </constraints>
+                                <state key="normal" title="楽器2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Mee-ia-F8f"/>
+                                        <exclude reference="k1X-jE-pwn"/>
+                                        <exclude reference="167-eM-Dhd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Mee-ia-F8f"/>
+                                        <include reference="k1X-jE-pwn"/>
+                                        <exclude reference="167-eM-Dhd"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2zh-F3-yli" firstAttribute="top" secondItem="rka-eP-Zad" secondAttribute="bottom" constant="32" id="1D4-2x-9Nb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MfF-X6-6yo" secondAttribute="trailing" constant="20" id="7SU-zE-F1P"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vPq-DO-Bom" secondAttribute="trailing" constant="21" id="8H2-zP-ovz"/>
-                            <constraint firstItem="IoH-0p-TVa" firstAttribute="top" secondItem="vPq-DO-Bom" secondAttribute="bottom" constant="27" id="JMd-fG-nhh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IoH-0p-TVa" secondAttribute="trailing" constant="21" id="MgO-ey-udW"/>
-                            <constraint firstItem="rka-eP-Zad" firstAttribute="top" secondItem="IoH-0p-TVa" secondAttribute="bottom" constant="29" id="RBi-CO-ZrW"/>
+                            <constraint firstItem="MfF-X6-6yo" firstAttribute="top" secondItem="2Dc-QR-ctA" secondAttribute="bottom" constant="17" id="E9g-at-Uuk"/>
+                            <constraint firstItem="2Dc-QR-ctA" firstAttribute="top" secondItem="vPq-DO-Bom" secondAttribute="bottom" constant="20" id="P6v-Z0-UcN"/>
+                            <constraint firstItem="2zh-F3-yli" firstAttribute="top" secondItem="MfF-X6-6yo" secondAttribute="bottom" constant="20" id="WxS-I2-HZR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Dc-QR-ctA" secondAttribute="trailing" constant="20" id="YgX-N7-2cF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2zh-F3-yli" secondAttribute="trailing" constant="26" id="bte-Cs-244"/>
                             <constraint firstItem="vPq-DO-Bom" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="jwB-Fb-SjX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rka-eP-Zad" secondAttribute="trailing" constant="21" id="zFb-Os-DTx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="vPq-DO-Bom"/>
-                                <exclude reference="IoH-0p-TVa"/>
-                                <exclude reference="rka-eP-Zad"/>
+                                <exclude reference="MfF-X6-6yo"/>
                                 <exclude reference="2zh-F3-yli"/>
+                                <exclude reference="2Dc-QR-ctA"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="8H2-zP-ovz"/>
                                 <exclude reference="jwB-Fb-SjX"/>
-                                <exclude reference="JMd-fG-nhh"/>
-                                <exclude reference="MgO-ey-udW"/>
-                                <exclude reference="RBi-CO-ZrW"/>
-                                <exclude reference="zFb-Os-DTx"/>
-                                <exclude reference="1D4-2x-9Nb"/>
+                                <exclude reference="P6v-Z0-UcN"/>
+                                <exclude reference="YgX-N7-2cF"/>
+                                <exclude reference="7SU-zE-F1P"/>
+                                <exclude reference="E9g-at-Uuk"/>
+                                <exclude reference="WxS-I2-HZR"/>
                                 <exclude reference="bte-Cs-244"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="vPq-DO-Bom"/>
-                                <include reference="IoH-0p-TVa"/>
-                                <include reference="rka-eP-Zad"/>
+                                <include reference="MfF-X6-6yo"/>
                                 <include reference="2zh-F3-yli"/>
+                                <include reference="2Dc-QR-ctA"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="8H2-zP-ovz"/>
                                 <include reference="jwB-Fb-SjX"/>
-                                <include reference="JMd-fG-nhh"/>
-                                <include reference="MgO-ey-udW"/>
-                                <include reference="RBi-CO-ZrW"/>
-                                <include reference="zFb-Os-DTx"/>
-                                <include reference="1D4-2x-9Nb"/>
+                                <include reference="P6v-Z0-UcN"/>
+                                <include reference="YgX-N7-2cF"/>
+                                <include reference="7SU-zE-F1P"/>
+                                <include reference="E9g-at-Uuk"/>
+                                <include reference="WxS-I2-HZR"/>
                                 <include reference="bte-Cs-244"/>
                             </mask>
                         </variation>
@@ -143,8 +221,7 @@
                                                     <exclude reference="bFp-CK-Apg"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="109" y="9" width="198" height="21"/>
+                                            <variation key="widthClass=compact">
                                                 <mask key="constraints">
                                                     <exclude reference="6hb-AK-c15"/>
                                                     <include reference="L8x-VW-lZN"/>
@@ -256,8 +333,7 @@
                                                     <exclude reference="n17-Fw-kLR"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="109" y="37" width="198" height="54"/>
+                                            <variation key="widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="bOe-nf-gid"/>
                                                     <include reference="n17-Fw-kLR"/>
