@@ -1,3 +1,4 @@
 pod 'MagicalRecord'
 pod "AFNetworking"
 pod "AFNetworkActivityLogger"
+pod "MagicalRecord"
