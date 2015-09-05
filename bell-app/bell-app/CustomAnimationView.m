@@ -6,13 +6,14 @@
 //  Copyright (c) 2015年 VCJPCM012. All rights reserved.
 //
 
-#import "CostomAnimationView.h"
-#import "CostomAnimationManager.h"
+#import "CustomAnimationView.h"
+#import "CustomAnimationManager.h"
+#import <QuartzCore/QuartzCore.h>
 
-@implementation CostomAnimationView
+@implementation CustomAnimationView
 
 const int EFFECT_MAX_SIZE = 200;
-const int EFFECT_MIN_SIZE = 10;
+const int EFFECT_MIN_SIZE = 50;
 
 -(id)initWithFrame:(CGRect)frame{
     
@@ -36,15 +37,36 @@ const int EFFECT_MIN_SIZE = 10;
     
 }
 
+
+-(int)SetRandomAnimationList{
+    int a[4] =   {
+        UIViewAnimationOptionTransitionFlipFromBottom,
+        UIViewAnimationOptionTransitionFlipFromLeft,
+        UIViewAnimationOptionTransitionFlipFromRight,
+        UIViewAnimationOptionTransitionFlipFromTop,
+    };
+    
+    int random = [CustomAnimationManager getRandomIntWithMin:0 Max:3];
+    int result = a[random];
+    
+    return result;
+}
+
 -(void)performEffect{
     
-    [UIView animateWithDuration:1.0f
-                     animations:^{
-                         CGFloat size = [CostomAnimationManager getRandomIntWithMin:EFFECT_MIN_SIZE Max:EFFECT_MAX_SIZE];
-                         self.frame = CGRectMake(self.frame.origin.x - size/2, self.frame.origin.y - size / 2, size, size);                     }
-                     completion:^(BOOL finished){
-                         [self afterEffect];
-                     }];
+    //[CATransaction flush];
+    [UIView transitionWithView:self
+                      duration:1.0f
+                       options:[self SetRandomAnimationList]//UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+   
+                        CGFloat size = [CustomAnimationManager getRandomIntWithMin:EFFECT_MIN_SIZE Max:EFFECT_MAX_SIZE];
+                        self.frame = CGRectMake(self.frame.origin.x - size/2, self.frame.origin.y - size / 2, size, size);
+    
+                    }
+                    completion:^(BOOL finished){
+                        [self afterEffect];
+                    }];
     
 }
 
@@ -56,7 +78,6 @@ const int EFFECT_MIN_SIZE = 10;
                          animations:^{
                              CGFloat origin_x = self.frame.origin.x;
                              CGFloat origin_y = self.frame.origin.y;
-                             
                              self.frame = CGRectMake(origin_x+self.frame.size.width/2, origin_y+self.frame.size.height/2, 0, 0);
                          }
                          completion:^(BOOL finished){
@@ -64,17 +85,6 @@ const int EFFECT_MIN_SIZE = 10;
                          }];
     }
 
-}
-
--(void)initialize{
-    
-    
-    
-}
-
--(void)setAnimationAndStart:(AnimationStyle)style{
-    
-    
 }
 
 + (UIImage *)imageWithColor:(UIColor *)color {

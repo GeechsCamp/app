@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CostomAnimationManager : NSObject
+@interface CustomAnimationManager : NSObject
 
 @property(nonatomic,weak) UIView* targetView;
 
 
 -(void)targetView:(UIView*)view;
 -(void)actEffect;
-+ (CostomAnimationManager *)sharedManager;
++ (CustomAnimationManager *)sharedManager;
 + (int)getRandomIntWithMin:(int)min Max:(int)max;
 
 @end

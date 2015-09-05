@@ -6,26 +6,48 @@
 //  Copyright (c) 2015年 VCJPCM012. All rights reserved.
 //
 
-#import "CostomAnimationManager.h"
-#import "CostomAnimationView.h"
+#import "CustomAnimationManager.h"
+#import "CustomAnimationView.h"
 
-@implementation CostomAnimationManager{
+@implementation CustomAnimationManager{
     
     NSMutableArray* effectViews;
+    NSArray* TransitionArray;
 
 }
 
-static CostomAnimationManager *sharedData_ = nil;
+static CustomAnimationManager *sharedData_ = nil;
 const int EFFECT_NUMBERS = 12;
+
+-(void)initialize{
+    
+    TransitionArray = @[
+//              @"flip",
+//              @"alignedFlip",
+//              @"oglFlip",
+//              @"rotate",
+//              @"pageCurl",
+//              @"pageUnCurl",
+            @"rippleEffect",
+//              @"suckEffect"
+              ];
+    
+
+
+}
 
 -(void)targetView:(UIView*)view{
     
 
     self.targetView = view;
+    //[self setEffectViews];
     
 }
 
+
 -(void)actEffect{
+    
+    int effectMode = 1;
     
     //エフェクトスタイルの決定
     
@@ -35,24 +57,34 @@ const int EFFECT_NUMBERS = 12;
     
     for(int i=0; i < EFFECT_NUMBERS;i++){
         
-        CostomAnimationView* view = [[CostomAnimationView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
-        CGFloat position_x = [CostomAnimationManager getRandomIntWithMin:0 Max:self.targetView.frame.size.width];
-        CGFloat position_y = [CostomAnimationManager getRandomIntWithMin:0 Max:self.targetView.frame.size.height];
+        CustomAnimationView* view = [[CustomAnimationView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+        CGFloat position_x = [CustomAnimationManager getRandomIntWithMin:0 Max:self.targetView.frame.size.width];
+        CGFloat position_y = [CustomAnimationManager getRandomIntWithMin:0 Max:self.targetView.frame.size.height];
         view.center = CGPointMake(position_x,position_y);
         //view.image = [UIImage imageNamed:@"test.jpg"];
-        view.image = [CostomAnimationView imageWithColor:[CostomAnimationManager getColorOne]];
+        view.image = [CustomAnimationView imageWithColor:[CustomAnimationManager getColorOne]];
         [self.targetView addSubview:view];
+        [view setNeedsDisplay];
         [effectViews addObject:view];
     
     }
     
     [effectViews makeObjectsPerformSelector:@selector(performEffect)];
-    CATransition *animation = [CATransition animation];
-    [animation setDelegate:self];
-    [animation setDuration:1.0f];
-    [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
-    [animation setType:@"rippleEffect" ];
-    [self.targetView.layer addAnimation:animation forKey:NULL];
+    
+    if(effectMode){
+        NSString* randomTransition = [TransitionArray objectAtIndex:[CustomAnimationManager getRandomIntWithMin:0 Max:(int)(TransitionArray.count-1)]];
+        CATransition *animation = [CATransition animation];
+        [animation setDelegate:self];
+        [animation setDuration:1.0f];
+        [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
+        [animation setType:randomTransition];
+        //[CATransaction flush];
+        [self.targetView.layer addAnimation:animation forKey:NULL];
+//        for (CostomAnimationView* views in effectViews) {
+//            [CATransaction flush];
+//            [views.layer addAnimation:animation forKey:NULL];
+//        }
+    }
 
 }
 
@@ -62,12 +94,13 @@ const int EFFECT_NUMBERS = 12;
     
 }
 
-+ (CostomAnimationManager *)sharedManager{
++ (CustomAnimationManager *)sharedManager{
     
     @synchronized(self){
         
         if (!sharedData_) {
-            sharedData_ = [CostomAnimationManager new];
+            sharedData_ = [CustomAnimationManager new];
+            [sharedData_ initialize];
         }
         
     }
@@ -78,7 +111,7 @@ const int EFFECT_NUMBERS = 12;
     
     UIColor* result = [UIColor colorWithRed:0.29 green:0.29 blue:0.29 alpha:1];
     
-    int randomSelect = [CostomAnimationManager getRandomIntWithMin:1 Max:6];
+    int randomSelect = [CustomAnimationManager getRandomIntWithMin:1 Max:6];
     
     switch (randomSelect) {
         case 1:
