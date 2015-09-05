@@ -31,6 +31,8 @@
 		EF26FF2C1B9B3CCA00D5F338 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF251B9B3CCA00D5F338 /* mztools.c */; };
 		EF26FF2D1B9B3CCA00D5F338 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF271B9B3CCA00D5F338 /* unzip.c */; };
 		EF26FF2E1B9B3CCA00D5F338 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF291B9B3CCA00D5F338 /* zip.c */; };
+		EF26FF351B9B49DF00D5F338 /* instrumentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF331B9B49DF00D5F338 /* instrumentModel.xcdatamodeld */; };
+		EF26FF381B9B4C3A00D5F338 /* Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF371B9B4C3A00D5F338 /* Instruments.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,9 @@
 		EF26FF281B9B3CCA00D5F338 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
 		EF26FF291B9B3CCA00D5F338 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		EF26FF2A1B9B3CCA00D5F338 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		EF26FF341B9B49DF00D5F338 /* instrumentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = instrumentModel.xcdatamodel; sourceTree = "<group>"; };
+		EF26FF361B9B4C3A00D5F338 /* Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruments.h; sourceTree = "<group>"; };
+		EF26FF371B9B4C3A00D5F338 /* Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruments.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +140,7 @@
 		B2356ED01B9A7C0C00CCA4F2 /* bell-app */ = {
 			isa = PBXGroup;
 			children = (
+				EF26FF2F1B9B46B400D5F338 /* SQLiteData */,
 				B2356EF91B9A7C3000CCA4F2 /* views */,
 				B2356EF81B9A7C2800CCA4F2 /* common */,
 				B2356EF71B9A7C2000CCA4F2 /* resources */,
@@ -258,6 +264,16 @@
 				EF26FF2A1B9B3CCA00D5F338 /* zip.h */,
 			);
 			path = minizip;
+			sourceTree = "<group>";
+		};
+		EF26FF2F1B9B46B400D5F338 /* SQLiteData */ = {
+			isa = PBXGroup;
+			children = (
+				EF26FF331B9B49DF00D5F338 /* instrumentModel.xcdatamodeld */,
+				EF26FF361B9B4C3A00D5F338 /* Instruments.h */,
+				EF26FF371B9B4C3A00D5F338 /* Instruments.m */,
+			);
+			name = SQLiteData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +418,7 @@
 				EF26FF161B9B3BE200D5F338 /* Main2ViewController.m in Sources */,
 				B2356EDA1B9A7C0C00CCA4F2 /* ViewController.m in Sources */,
 				EF26FF171B9B3BE200D5F338 /* RecognizePhoneWave.m in Sources */,
+				EF26FF381B9B4C3A00D5F338 /* Instruments.m in Sources */,
 				EF26FF2E1B9B3CCA00D5F338 /* zip.c in Sources */,
 				CC2D3CD11B9AB0020006A9F0 /* modules.m in Sources */,
 				CC2225071B9AE801007D95D7 /* DownloadView.m in Sources */,
@@ -413,6 +430,7 @@
 				B2356ED41B9A7C0C00CCA4F2 /* main.m in Sources */,
 				CC2D3CD71B9AC21F0006A9F0 /* DownloadCell.m in Sources */,
 				EF26FF1E1B9B3C7800D5F338 /* SSZipArchive.m in Sources */,
+				EF26FF351B9B49DF00D5F338 /* instrumentModel.xcdatamodeld in Sources */,
 				EF26FF2C1B9B3CCA00D5F338 /* mztools.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +644,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EF26FF331B9B49DF00D5F338 /* instrumentModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EF26FF341B9B49DF00D5F338 /* instrumentModel.xcdatamodel */,
+			);
+			currentVersion = EF26FF341B9B49DF00D5F338 /* instrumentModel.xcdatamodel */;
+			path = instrumentModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B2356EC61B9A7C0C00CCA4F2 /* Project object */;
 }

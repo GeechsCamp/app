@@ -9,6 +9,9 @@
 #import "DownloadView.h"
 #import "DownloadCell.h"
 #import "dummy_data.h"
+#import <CoreData/CoreData.h>
+#import "Instruments.h"
+
 
 @interface DownloadView ()
 
@@ -21,8 +24,82 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self getAllSoundsData];
+    
     [self setDummyData];
 }
+
+
+-(void)getAllSoundsData {
+    
+    NSString* urlString = @"http://geechscamp.xyz/gc_instruments";
+    
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    
+//    __block __weak typeof(self)weakself = self;
+//    
+//    [manager GET:urlString
+//      parameters:nil
+//         success:^(NSURLSessionDataTask *task, id responseObject) {
+//             // 通信に成功した場合の処理
+//             
+//             NSLog(@"獲得jsondata == %@",responseObject);
+//             
+//             
+//         } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//             // エラーの場合はエラーの内容をコンソールに出力する
+//             NSLog(@"Error: %@", error);
+//         }];
+    
+    
+    
+    
+    NSURL *url = [NSURL URLWithString:@"http://geechscamp.xyz/gc_instruments/"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *json_data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    // データが取得できた場合
+    if (json_data != nil) {
+        NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"array==%@",jsonObject);
+        
+        self.datas = jsonObject;
+    }
+    
+    
+    
+    
+    //Instruments* instruments =
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
