@@ -21,6 +21,16 @@
 		CC2D3CD41B9AB2E90006A9F0 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D3CD31B9AB2E90006A9F0 /* 01.png */; };
 		CC2D3CD71B9AC21F0006A9F0 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2D3CD61B9AC21F0006A9F0 /* DownloadCell.m */; };
 		E9CF16404796E76A7C7DB0C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6EDA082A064DCF1C1259B1 /* libPods.a */; };
+		EF26FF141B9B3BE200D5F338 /* DownLoadSoundZipData.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF0D1B9B3BE200D5F338 /* DownLoadSoundZipData.m */; };
+		EF26FF151B9B3BE200D5F338 /* GetAudioSound.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF0F1B9B3BE200D5F338 /* GetAudioSound.m */; };
+		EF26FF161B9B3BE200D5F338 /* Main2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF111B9B3BE200D5F338 /* Main2ViewController.m */; };
+		EF26FF171B9B3BE200D5F338 /* RecognizePhoneWave.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF131B9B3BE200D5F338 /* RecognizePhoneWave.m */; };
+		EF26FF1E1B9B3C7800D5F338 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF1C1B9B3C7800D5F338 /* SSZipArchive.m */; };
+		EF26FF201B9B3CAC00D5F338 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EF26FF1F1B9B3CAC00D5F338 /* libz.1.2.5.dylib */; };
+		EF26FF2B1B9B3CCA00D5F338 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF231B9B3CCA00D5F338 /* ioapi.c */; };
+		EF26FF2C1B9B3CCA00D5F338 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF251B9B3CCA00D5F338 /* mztools.c */; };
+		EF26FF2D1B9B3CCA00D5F338 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF271B9B3CCA00D5F338 /* unzip.c */; };
+		EF26FF2E1B9B3CCA00D5F338 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF291B9B3CCA00D5F338 /* zip.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +70,26 @@
 		CC2D3CD31B9AB2E90006A9F0 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
 		CC2D3CD51B9AC21F0006A9F0 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
 		CC2D3CD61B9AC21F0006A9F0 /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
+		EF26FF0C1B9B3BE200D5F338 /* DownLoadSoundZipData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadSoundZipData.h; sourceTree = "<group>"; };
+		EF26FF0D1B9B3BE200D5F338 /* DownLoadSoundZipData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadSoundZipData.m; sourceTree = "<group>"; };
+		EF26FF0E1B9B3BE200D5F338 /* GetAudioSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAudioSound.h; sourceTree = "<group>"; };
+		EF26FF0F1B9B3BE200D5F338 /* GetAudioSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAudioSound.m; sourceTree = "<group>"; };
+		EF26FF101B9B3BE200D5F338 /* Main2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main2ViewController.h; sourceTree = "<group>"; };
+		EF26FF111B9B3BE200D5F338 /* Main2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Main2ViewController.m; sourceTree = "<group>"; };
+		EF26FF121B9B3BE200D5F338 /* RecognizePhoneWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognizePhoneWave.h; sourceTree = "<group>"; };
+		EF26FF131B9B3BE200D5F338 /* RecognizePhoneWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecognizePhoneWave.m; sourceTree = "<group>"; };
+		EF26FF1C1B9B3C7800D5F338 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		EF26FF1D1B9B3C7800D5F338 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		EF26FF1F1B9B3CAC00D5F338 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		EF26FF221B9B3CCA00D5F338 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		EF26FF231B9B3CCA00D5F338 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		EF26FF241B9B3CCA00D5F338 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		EF26FF251B9B3CCA00D5F338 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		EF26FF261B9B3CCA00D5F338 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		EF26FF271B9B3CCA00D5F338 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		EF26FF281B9B3CCA00D5F338 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		EF26FF291B9B3CCA00D5F338 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		EF26FF2A1B9B3CCA00D5F338 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF26FF201B9B3CAC00D5F338 /* libz.1.2.5.dylib in Frameworks */,
 				E9CF16404796E76A7C7DB0C0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +203,15 @@
 		B2356EF91B9A7C3000CCA4F2 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EF26FF181B9B3C2A00D5F338 /* Library */,
+				EF26FF0C1B9B3BE200D5F338 /* DownLoadSoundZipData.h */,
+				EF26FF0D1B9B3BE200D5F338 /* DownLoadSoundZipData.m */,
+				EF26FF0E1B9B3BE200D5F338 /* GetAudioSound.h */,
+				EF26FF0F1B9B3BE200D5F338 /* GetAudioSound.m */,
+				EF26FF101B9B3BE200D5F338 /* Main2ViewController.h */,
+				EF26FF111B9B3BE200D5F338 /* Main2ViewController.m */,
+				EF26FF121B9B3BE200D5F338 /* RecognizePhoneWave.h */,
+				EF26FF131B9B3BE200D5F338 /* RecognizePhoneWave.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -179,6 +219,7 @@
 		CEECCDA7A1BD8CF0E2207431 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF26FF1F1B9B3CAC00D5F338 /* libz.1.2.5.dylib */,
 				5D6EDA082A064DCF1C1259B1 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -191,6 +232,32 @@
 				80D245669365AA19C856739B /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EF26FF181B9B3C2A00D5F338 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				EF26FF211B9B3CCA00D5F338 /* minizip */,
+				EF26FF1C1B9B3C7800D5F338 /* SSZipArchive.m */,
+				EF26FF1D1B9B3C7800D5F338 /* SSZipArchive.h */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		EF26FF211B9B3CCA00D5F338 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				EF26FF221B9B3CCA00D5F338 /* crypt.h */,
+				EF26FF231B9B3CCA00D5F338 /* ioapi.c */,
+				EF26FF241B9B3CCA00D5F338 /* ioapi.h */,
+				EF26FF251B9B3CCA00D5F338 /* mztools.c */,
+				EF26FF261B9B3CCA00D5F338 /* mztools.h */,
+				EF26FF271B9B3CCA00D5F338 /* unzip.c */,
+				EF26FF281B9B3CCA00D5F338 /* unzip.h */,
+				EF26FF291B9B3CCA00D5F338 /* zip.c */,
+				EF26FF2A1B9B3CCA00D5F338 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,12 +399,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF26FF161B9B3BE200D5F338 /* Main2ViewController.m in Sources */,
 				B2356EDA1B9A7C0C00CCA4F2 /* ViewController.m in Sources */,
+				EF26FF171B9B3BE200D5F338 /* RecognizePhoneWave.m in Sources */,
+				EF26FF2E1B9B3CCA00D5F338 /* zip.c in Sources */,
 				CC2D3CD11B9AB0020006A9F0 /* modules.m in Sources */,
 				CC2225071B9AE801007D95D7 /* DownloadView.m in Sources */,
+				EF26FF141B9B3BE200D5F338 /* DownLoadSoundZipData.m in Sources */,
+				EF26FF2B1B9B3CCA00D5F338 /* ioapi.c in Sources */,
 				B2356ED71B9A7C0C00CCA4F2 /* AppDelegate.m in Sources */,
+				EF26FF2D1B9B3CCA00D5F338 /* unzip.c in Sources */,
+				EF26FF151B9B3BE200D5F338 /* GetAudioSound.m in Sources */,
 				B2356ED41B9A7C0C00CCA4F2 /* main.m in Sources */,
 				CC2D3CD71B9AC21F0006A9F0 /* DownloadCell.m in Sources */,
+				EF26FF1E1B9B3C7800D5F338 /* SSZipArchive.m in Sources */,
+				EF26FF2C1B9B3CCA00D5F338 /* mztools.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
