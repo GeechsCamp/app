@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lWG-Q3-kma">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -18,6 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPq-DO-Bom">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.97283380681818177" green="0.94851896893732279" blue="0.9698031732497111" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9Zl-j5-lag"/>
+                                    <constraint firstAttribute="height" constant="50" id="HY9-1I-co3"/>
+                                    <constraint firstAttribute="height" constant="30" id="R2K-rK-EQS"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9Zl-j5-lag"/>
+                                        <exclude reference="HY9-1I-co3"/>
+                                        <exclude reference="R2K-rK-EQS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="314" y="88" width="50" height="50"/>
+                                    <mask key="constraints">
+                                        <include reference="9Zl-j5-lag"/>
+                                        <include reference="HY9-1I-co3"/>
+                                        <exclude reference="R2K-rK-EQS"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="tapItem_1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XcC-m2-IQF"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zh-F3-yli">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.77657331333189739" green="1" blue="0.96182722152570888" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,7 +71,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="0sw-cd-puc" kind="modal" id="9az-lC-oAw"/>
+                                    <segue destination="0sw-cd-puc" kind="push" id="RRg-8J-n1b"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-X6-6yo">
@@ -71,35 +101,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="tapItem_3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IFb-pw-ooJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPq-DO-Bom">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.97283380681818177" green="0.94851896893732279" blue="0.9698031732497111" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="9Zl-j5-lag"/>
-                                    <constraint firstAttribute="height" constant="50" id="HY9-1I-co3"/>
-                                    <constraint firstAttribute="height" constant="30" id="R2K-rK-EQS"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="9Zl-j5-lag"/>
-                                        <exclude reference="HY9-1I-co3"/>
-                                        <exclude reference="R2K-rK-EQS"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="9Zl-j5-lag"/>
-                                        <include reference="HY9-1I-co3"/>
-                                        <exclude reference="R2K-rK-EQS"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="tapItem_1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XcC-m2-IQF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-QR-ctA">
@@ -145,9 +146,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="vPq-DO-Bom"/>
                                 <exclude reference="2zh-F3-yli"/>
                                 <exclude reference="MfF-X6-6yo"/>
-                                <exclude reference="vPq-DO-Bom"/>
                                 <exclude reference="2Dc-QR-ctA"/>
                             </mask>
                             <mask key="constraints">
@@ -163,9 +164,9 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="vPq-DO-Bom"/>
                                 <include reference="2zh-F3-yli"/>
                                 <include reference="MfF-X6-6yo"/>
-                                <include reference="vPq-DO-Bom"/>
                                 <include reference="2Dc-QR-ctA"/>
                             </mask>
                             <mask key="constraints">
@@ -180,6 +181,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="Wod-UE-CKj"/>
                     <connections>
                         <outlet property="item_1" destination="vPq-DO-Bom" id="0jP-Ry-JwL"/>
                         <outlet property="item_2" destination="2Dc-QR-ctA" id="ohb-jk-q7a"/>
@@ -188,9 +190,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="163.5" y="323"/>
+            <point key="canvasLocation" x="1081.5" y="323"/>
         </scene>
-        <!--Download View-->
+        <!--Choose Sound-->
         <scene sceneID="6PA-Wh-5Wg">
             <objects>
                 <tableViewController id="0sw-cd-puc" customClass="DownloadView" sceneMemberID="viewController">
@@ -198,17 +200,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="b4l-M0-Cgg">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <barButtonItem systemItem="cancel" id="Cme-qS-5kt">
-                                    <connections>
-                                        <action selector="cancel:" destination="0sw-cd-puc" id="QCN-zV-juW"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="downloadCell" rowHeight="100" id="Q86-S5-owl" customClass="DownloadCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -422,10 +413,35 @@
                             <outlet property="delegate" destination="0sw-cd-puc" id="PGV-jW-cCj"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Choose Sound" id="OID-S0-zua">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Re4-UI-ysc">
+                            <connections>
+                                <action selector="cancel:" destination="0sw-cd-puc" id="fxt-mO-qMD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="as9-3a-UdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008" y="323"/>
+            <point key="canvasLocation" x="1926" y="323"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x69-Wg-bha">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lWG-Q3-kma" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dv7-s5-LOb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BOb-27-Zka"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="etg-MV-r9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="163.5" y="323"/>
         </scene>
     </scenes>
     <resources>

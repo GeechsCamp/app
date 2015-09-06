@@ -37,6 +37,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
     [self setSelectedItems];
     
     // ボタンを描画
@@ -62,8 +64,6 @@
     if ([self.selected_item isEqual:@"1"]) [self.item_1 setBackgroundColor:[UIColor yellowColor]];
     if ([self.selected_item isEqual:@"2"]) [self.item_2 setBackgroundColor:[UIColor yellowColor]];
     if ([self.selected_item isEqual:@"3"]) [self.item_3 setBackgroundColor:[UIColor yellowColor]];
-    
-    // ここにid渡して音を変える処理 - ひできさんおねがいします
 }
 
 
@@ -110,23 +110,24 @@
 -(void)setSelectedItems {
     // 選択されている楽器を読み込む
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults dataForKey:@"use_items"] != nil) {
-        self.use_items_top = [NSKeyedUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"use_items"]];
+    if ([defaults objectForKey:@"use_items"] != nil) {
+        NSDictionary* dic = [defaults objectForKey:@"use_items"];
+        self.use_items_top = [dic mutableCopy];
     } else {
         // 初回起動時はデフォルト値を保存
-        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+        NSDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                     @5,@"1",
                                     @1,@"2",
                                     @2,@"3",
                                 nil];
-        self.use_items_top = dic;
+        self.use_items_top = [dic mutableCopy];
         [defaults setObject:dic forKey:@"use_items"];
         [defaults synchronize];
     }
     
     //今鳴る楽器を呼ぶ
-    if ([defaults dataForKey:@"selected_item"] != nil) {
-        self.selected_item = [NSKeyedUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"selected"]];
+    if ([defaults objectForKey:@"selected_item"] != nil) {
+        self.selected_item = [defaults objectForKey:@"selected"];
     } else {
         // 初回起動時はデフォルト値を保存
         NSString *selected_item = @"0";

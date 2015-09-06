@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [self setSelectedItems];
     [self CreateAllSoundsLocalData];
@@ -255,21 +256,26 @@
 
 - (void)otherButtonPushed:(NSString*)registerNum {
     // 選択された番号をuse_itemsに更新
-    
+//    [self.use_items setObject:_selectedSoundID forKey:registerNum];
+    NSMutableDictionary *dic = [self.use_items mutableCopy];
+    [dic setObject:_selectedSoundID forKey:registerNum];
+    NSDictionary *dic_for_ud = dic;
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:_selectedSoundID forKey:registerNum];
+    [defaults setObject:dic_for_ud forKey:@"use_items"];
     [defaults synchronize];
 }
 
 - (void)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)setSelectedItems {
     // 選択されている楽器を読み込む
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults dataForKey:@"use_items"] != nil) {
-        self.use_items = [NSKeyedUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"use_items"]];
+    if ([defaults objectForKey:@"use_items"] != nil) {
+        self.use_items = [defaults objectForKey:@"use_items"];
     }
 }
 
