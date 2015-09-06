@@ -36,6 +36,10 @@
 		EF26FF4F1B9BBF6C00D5F338 /* Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF4C1B9BBF6C00D5F338 /* Instruments.m */; };
 		EFD388BA1B9BCD3D000A2160 /* backgroiund.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EFD388B91B9BCD3D000A2160 /* backgroiund.jpg */; };
 		EFD388BE1B9BD4A2000A2160 /* 0315043006.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EFD388BD1B9BD4A2000A2160 /* 0315043006.jpg */; };
+		EFD388C11B9BE6D9000A2160 /* CustomMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD388C01B9BE6D9000A2160 /* CustomMotionManager.m */; };
+		EFD388C71B9BE954000A2160 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD388C31B9BE954000A2160 /* SVIndefiniteAnimatedView.m */; };
+		EFD388C81B9BE954000A2160 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD388C61B9BE954000A2160 /* SVProgressHUD.m */; };
+		EFD388CA1B9BE9C5000A2160 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD388C91B9BE9C5000A2160 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +108,14 @@
 		EF26FF4D1B9BBF6C00D5F338 /* Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruments.h; sourceTree = "<group>"; };
 		EFD388B91B9BCD3D000A2160 /* backgroiund.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroiund.jpg; sourceTree = "<group>"; };
 		EFD388BD1B9BD4A2000A2160 /* 0315043006.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0315043006.jpg; sourceTree = "<group>"; };
+		EFD388BF1B9BE6D9000A2160 /* CustomMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMotionManager.h; sourceTree = "<group>"; };
+		EFD388C01B9BE6D9000A2160 /* CustomMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMotionManager.m; sourceTree = "<group>"; };
+		EFD388C21B9BE954000A2160 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		EFD388C31B9BE954000A2160 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		EFD388C41B9BE954000A2160 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		EFD388C51B9BE954000A2160 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		EFD388C61B9BE954000A2160 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		EFD388C91B9BE9C5000A2160 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD388CA1B9BE9C5000A2160 /* QuartzCore.framework in Frameworks */,
 				EF26FF201B9B3CAC00D5F338 /* libz.1.2.5.dylib in Frameworks */,
 				E9CF16404796E76A7C7DB0C0 /* libPods.a in Frameworks */,
 			);
@@ -219,6 +232,8 @@
 		B2356EF91B9A7C3000CCA4F2 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EFD388BF1B9BE6D9000A2160 /* CustomMotionManager.h */,
+				EFD388C01B9BE6D9000A2160 /* CustomMotionManager.m */,
 				EF26FF181B9B3C2A00D5F338 /* Library */,
 				EF26FF0C1B9B3BE200D5F338 /* DownLoadSoundZipData.h */,
 				EF26FF0D1B9B3BE200D5F338 /* DownLoadSoundZipData.m */,
@@ -235,6 +250,7 @@
 		CEECCDA7A1BD8CF0E2207431 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EFD388C91B9BE9C5000A2160 /* QuartzCore.framework */,
 				EF26FF421B9B665000D5F338 /* libMagicalRecord.a */,
 				EF26FF401B9B627400D5F338 /* CoreData.framework */,
 				EF26FF1F1B9B3CAC00D5F338 /* libz.1.2.5.dylib */,
@@ -255,6 +271,11 @@
 		EF26FF181B9B3C2A00D5F338 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				EFD388C21B9BE954000A2160 /* SVIndefiniteAnimatedView.h */,
+				EFD388C31B9BE954000A2160 /* SVIndefiniteAnimatedView.m */,
+				EFD388C41B9BE954000A2160 /* SVProgressHUD-Prefix.pch */,
+				EFD388C51B9BE954000A2160 /* SVProgressHUD.h */,
+				EFD388C61B9BE954000A2160 /* SVProgressHUD.m */,
 				EF26FF211B9B3CCA00D5F338 /* minizip */,
 				EF26FF1C1B9B3C7800D5F338 /* SSZipArchive.m */,
 				EF26FF1D1B9B3C7800D5F338 /* SSZipArchive.h */,
@@ -443,6 +464,7 @@
 				EF26FF4F1B9BBF6C00D5F338 /* Instruments.m in Sources */,
 				EF26FF161B9B3BE200D5F338 /* Main2ViewController.m in Sources */,
 				B2356EDA1B9A7C0C00CCA4F2 /* ViewController.m in Sources */,
+				EFD388C11B9BE6D9000A2160 /* CustomMotionManager.m in Sources */,
 				EF26FF4E1B9BBF6C00D5F338 /* _Instruments.m in Sources */,
 				EF26FF171B9B3BE200D5F338 /* RecognizePhoneWave.m in Sources */,
 				EF26FF2E1B9B3CCA00D5F338 /* zip.c in Sources */,
@@ -454,7 +476,9 @@
 				EF26FF2D1B9B3CCA00D5F338 /* unzip.c in Sources */,
 				EF26FF151B9B3BE200D5F338 /* GetAudioSound.m in Sources */,
 				B2356ED41B9A7C0C00CCA4F2 /* main.m in Sources */,
+				EFD388C71B9BE954000A2160 /* SVIndefiniteAnimatedView.m in Sources */,
 				CC2D3CD71B9AC21F0006A9F0 /* DownloadCell.m in Sources */,
+				EFD388C81B9BE954000A2160 /* SVProgressHUD.m in Sources */,
 				EF26FF1E1B9B3C7800D5F338 /* SSZipArchive.m in Sources */,
 				EF26FF351B9B49DF00D5F338 /* instrumentModel.xcdatamodeld in Sources */,
 				EF26FF2C1B9B3CCA00D5F338 /* mztools.c in Sources */,

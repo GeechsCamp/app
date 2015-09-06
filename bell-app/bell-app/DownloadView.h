@@ -20,6 +20,8 @@
 @property (nonatomic,retain)UIAlertView* downloadConfirmAlert;
 @property (nonatomic,retain)NSString* selectedSoundID;
 
+@property (nonatomic,retain)NSIndexPath* selectedIndexPath;
+
 - (IBAction)cancel:(id)sender;
 
 

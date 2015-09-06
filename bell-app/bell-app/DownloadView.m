@@ -11,7 +11,7 @@
 #import "dummy_data.h"
 #import <MagicalRecord.h>
 #import "DownLoadSoundZipData.h"
-
+#import "SVProgressHUD.h"
 
 
 @interface DownloadView ()
@@ -169,8 +169,9 @@
         NSString* confirmMessage = [NSString stringWithFormat:@"Do you want to download [%@]?",instrumentName];
         _downloadConfirmAlert = [[UIAlertView alloc]initWithTitle:confirmMessage message:@"" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
         [_downloadConfirmAlert show];
-        
     }
+    
+    _selectedIndexPath = indexPath;
 
 }
 
@@ -195,14 +196,24 @@
                 break;
             case 1:
                 
+                [SVProgressHUD showWithStatus:@"Downloading..." maskType:SVProgressHUDMaskTypeGradient];
+                
                 //zipダウンロード処理実行
                 [DownLoadSoundZipData downloadZipData:_selectedSoundID SUCCESS:^(BOOL success) {
                     
                     [weakself showDownLoadedAlert];
+                    //[SVProgressHUD showSuccessWithStatus:@"ロード完了！"];
                     [weakself saveDownloadedSoundID:_selectedSoundID];
                     
-                    [weakself.tableView reloadData];
+
+                    DownloadCell* cell = (DownloadCell*)[self.tableView cellForRowAtIndexPath:_selectedIndexPath];
+                    cell.download.alpha = 0.0f;
+                    cell.statusLabel.alpha = 1.0f;
                     
+                    
+                    //[weakself.tableView reloadData];
+                    
+                    [SVProgressHUD dismiss];
                     
                 }];
                 break;
