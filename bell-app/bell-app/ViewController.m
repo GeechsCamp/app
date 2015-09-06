@@ -10,6 +10,7 @@
 #import "DownLoadSoundZipData.h"
 #import "GetAudioSound.h"
 #import <AFHTTPRequestOperation.h>
+#import <MagicalRecord.h>
 
 #import "DownloadView.h" //TODO: あとで消す
 
@@ -30,6 +31,7 @@
     // ボタンを描画
     [self ShowItemButton];
     
+    
     screenFrame = self.view.bounds.size;
     _motionManager = [[CustomMotionManager alloc] init];
     [self setupAccelerometer];
@@ -45,20 +47,15 @@
 }
 
 -(void)ShowItemButton {
-    // テストコード(本当はsqlite呼び出す
-    NSMutableArray* datas = [self returnDummyData];
-
     // 画像を呼ぶ
-    for (NSNumber* use_item in self.use_items_top) {
-//        NSDictionary* dic = [datas objectAtIndex: use_item.integerValue];
-//        
-//        // TODO:要修正
-//        NSURL *url = [NSURL URLWithString:dic[@"image_url"]];
-//        NSData *data = [NSData dataWithContentsOfURL:url];
-//        UIImage *image = [[UIImage alloc] initWithData:data];
-//        
-//        self.item_1.imageView.image = image;
-    }
+    NSDictionary *use_items = self.use_items_top;
+    Instruments *item_1 = [Instruments MR_findFirstByAttribute:@"id" withValue:use_items[@"1"]];
+    Instruments *item_2 = [Instruments MR_findFirstByAttribute:@"id" withValue:use_items[@"2"]];
+    Instruments *item_3 = [Instruments MR_findFirstByAttribute:@"id" withValue:use_items[@"3"]];
+    
+    [self.item_1 setImage:[self returnImage:item_1.image_url] forState:UIControlStateNormal];
+    [self.item_2 setImage:[self returnImage:item_2.image_url] forState:UIControlStateNormal];
+    [self.item_3 setImage:[self returnImage:item_3.image_url] forState:UIControlStateNormal];
     
     // 選択されてるやつは光る
 }
@@ -176,6 +173,15 @@
     [datas addObject:data01];
     [datas addObject:data02];
     return datas;
+}
+
+-(UIImage *)returnImage:(NSString *)url_string {
+    // キャッシュあったらそこから読み込むよ
+    NSURL *url = [NSURL URLWithString:url_string];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [[UIImage alloc] initWithData:data];
+    // キャッシュしてないならするよ
+    return image;
 }
 
 
