@@ -27,6 +27,32 @@ const float SOUNDTIME = 0.5;
 
 }
 
+-(CMAccelerometerHandler)handler{
+    
+    return handler;
+}
+
+//音楽演奏用
+-(void)playSound:(NSURL*)soundUrl {
+    
+    NSError* error = nil;
+    
+    NSData *songFile = [[NSData alloc] initWithContentsOfURL:soundUrl options:NSDataReadingMappedIfSafe error:&error ];
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:songFile error:&error];
+    
+    //_audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:soundUrl error:&error];
+    
+    if(error){
+        return;
+    }
+
+    _audioPlayer.delegate = self;
+    [_audioPlayer play];
+    
+    isPlay = YES;
+}
+
+
 -(void)setUpHandler:(id)target{
     
     self.delegate = target;
@@ -59,15 +85,31 @@ const float SOUNDTIME = 0.5;
         }else{
 
             isPlay = true;
-            [weakself.delegate stopSoundAFterDeley:SOUNDTIME];
-            NSURL* soundUrl = [GetAudioSound getSoundURL:soundid MP3Num:[[NSNumber numberWithUnsignedInt:soundRecognizeNum] stringValue]];
-            [weakself.delegate playSound:soundUrl];
+            [weakself stopSoundAfterDeley:SOUNDTIME];
+            NSURL* soundUrl = [GetAudioSound getSoundURL:soundid MP3Num:[[NSNumber numberWithInt:soundRecognizeNum] stringValue]];
+            [weakself playSound:soundUrl];
             
         }
         
     };
 
 
+}
+
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    
+    //isPlay = NO;
+    
+}
+
+-(void)stopSoundAfterDeley:(float)time{
+    
+    [self performSelector:@selector(changeisPlayNO) withObject:nil afterDelay:SOUNDTIME];
+
+}
+
+-(void)changeisPlayNO {
+    isPlay = NO;
 }
 
 @end

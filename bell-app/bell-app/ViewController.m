@@ -16,7 +16,6 @@
 @interface ViewController ()
 {
     CGSize screenFrame;
-    BOOL isPlay;
 }
 
 @end
@@ -32,7 +31,7 @@
     [self ShowItemButton];
     
     screenFrame = self.view.bounds.size;
-    _motionManager = [[CMMotionManager alloc] init];
+    _motionManager = [[CustomMotionManager alloc] init];
     [self setupAccelerometer];
     
     CGRect rect = CGRectMake(0, 0, screenFrame.width/2, screenFrame.height/2);
@@ -82,98 +81,29 @@
     
 }
 
+-(void)refleshXYZ:(double) xac y:(double) yac z:(double) zac{
 
--(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    
-    isPlay = NO;
-    
+    // 画面に表示
+    self.xLabel.text = [NSString stringWithFormat:@"x: %f", xac];
+    self.xLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
+    self.yLabel.text = [NSString stringWithFormat:@"y: %f", yac];
+    self.yLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
+    self.zLabel.text = [NSString stringWithFormat:@"z: %f", zac];
+    self.zLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
+
+
 }
-
 
 - (void)setupAccelerometer{
     if (_motionManager.accelerometerAvailable){
         // センサーの更新間隔の指定
         _motionManager.accelerometerUpdateInterval = 0.5f;
-        
-        // ハンドラを設定
-        CMAccelerometerHandler handler = ^(CMAccelerometerData *data, NSError *error)
-        {
-            // 加速度センサー
-            double xac = data.acceleration.x;
-            double yac = data.acceleration.y;
-            double zac = data.acceleration.z;
-            
-            
-            //最初のxyzのデフォルト値を取得
-            
-            
-            // 画面に表示
-            self.xLabel.text = [NSString stringWithFormat:@"x: %f", xac];
-            self.xLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
-            self.yLabel.text = [NSString stringWithFormat:@"y: %f", yac];
-            self.yLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
-            self.zLabel.text = [NSString stringWithFormat:@"z: %f", zac];
-            self.zLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
-            
-            //３つあるうちのどの音を出すかを判別する数字を取得（上:1,中:2,下:3)
-            int soundRecognizeNum = [RecognizePhoneWave DecideSoundbyWave:xac Y:yac Z:zac];
-            
-            //サウンドIDの取得
-            NSString* soundid = @"1";
-            
-            //位置に合わせて出す音を分ける
-            if(isPlay){
-                return;
-                
-            }else if (soundRecognizeNum == 1) {
-                isPlay = true;
-                
-                [self performSelector:@selector(changeisPlayNO) withObject:nil afterDelay:0.5f];
-                
-                NSURL* soundUrl = [GetAudioSound getSoundURL:soundid MP3Num: @"1"];
-                [self playSound:soundUrl];
-                
-                
-            }else if (soundRecognizeNum == 2) {
-                isPlay = true;
-                [self performSelector:@selector(changeisPlayNO) withObject:nil afterDelay:0.5f];
-                
-                NSURL* soundUrl = [GetAudioSound getSoundURL:soundid MP3Num: @"2"];
-                [self playSound:soundUrl];
-                
-                
-            }else if (soundRecognizeNum == 3) {
-                isPlay = true;
-                [self performSelector:@selector(changeisPlayNO) withObject:nil afterDelay:0.5f];
-                
-                NSURL* soundUrl = [GetAudioSound getSoundURL:soundid MP3Num: @"3"];
-                [self playSound:soundUrl];
-            }
-        };
+        [_motionManager setUpHandler:self];
         
         // 加速度の取得開始
-        [_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:handler];
+        [_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[_motionManager handler]];
     }
     
-}
-
--(void)changeisPlayNO {
-    isPlay = NO;
-}
-
-//音楽演奏用
--(void)playSound:(NSURL*)soundUrl {
-    
-    NSError* error = nil;
-    _audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:soundUrl error:&error];
-    
-    if(error){
-        return;
-    }
-    _audioPlayer.delegate = self;
-    [_audioPlayer play];
-    
-    isPlay = YES;
 }
 
 -(void)setSelectedItems {
