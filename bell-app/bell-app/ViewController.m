@@ -15,6 +15,7 @@
 @interface ViewController ()
 {
     CGSize screenFrame;
+    UIView* motionScreen;
 }
 
 @end
@@ -23,6 +24,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    motionScreen = [[UIView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:motionScreen];
+    [[CustomAnimationManager sharedManager] setTargetView:motionScreen];
+    
+    CGRect rect = CGRectMake(0, 0, screenFrame.width/2, screenFrame.height/2);
+    [self MakeShowUILabels:rect];
+    
+    screenFrame = self.view.bounds.size;
+    _motionManager = [[CustomMotionManager alloc] init];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -31,12 +42,9 @@
     // ボタンを描画
     [self ShowItemButton];
     
-    screenFrame = self.view.bounds.size;
-    _motionManager = [[CustomMotionManager alloc] init];
     [self setupAccelerometer];
     
-    CGRect rect = CGRectMake(0, 0, screenFrame.width/2, screenFrame.height/2);
-    [self MakeShowUILabels:rect];
+
 }
 
 -(void)ShowItemButton {
@@ -149,6 +157,77 @@
     UIImage *image = [[UIImage alloc] initWithData:data];
     // キャッシュしてないならするよ
     return image;
+}
+
+- (BOOL)canBecomeFirstResponder
+
+{
+    
+    return YES;
+    
+}
+
+
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+
+{
+    
+    if(event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake)
+        
+    {
+        
+        NSLog(@"Motion began");
+        [[CustomAnimationManager sharedManager] actEffect];
+        [_motionManager resetCount];
+        
+    }
+    
+}
+
+
+
+- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event
+
+{
+    
+    if(event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake)
+        
+    {
+        
+        NSLog(@"Motion cancelled");
+        [[CustomAnimationManager sharedManager] actEffect];
+        [_motionManager resetCount];
+        
+    }
+    
+}
+
+
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+
+{
+    
+    if(event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake)
+        
+    {
+        
+        NSLog(@"Motion end");
+        
+        [_motionManager actSound];
+        [[CustomAnimationManager sharedManager] actEffect];
+        [_motionManager resetCount];
+        
+    }
+    
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    [_motionManager stopAccelerometerUpdates];
+    
 }
 
 
