@@ -8,6 +8,8 @@
 
 #import "DownloadCell.h"
 #import <MagicalRecord.h>
+#import "SDWebImageDownloader.h"
+#import "SDWebImageManager.h"
 
 @implementation DownloadCell
 
@@ -37,11 +39,25 @@
 //    [self.image setImageWithURL:[NSURL URLWithString:dataOfRow[@"image_url"]]];
 //    UIImageView *test;
     
-    NSURL *url = [NSURL URLWithString:instrument.image_url];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *image = [[UIImage alloc] initWithData:data];
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:instrument.image_url]
+                                                    options:0
+                                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                   }
+                                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                      
+                                                      self.image.image = image;
+                                                      
+                                                  }];
     
-    self.image.image = image;
+    
+    
+    
+    
+    NSURL *url = [NSURL URLWithString:instrument.image_url];
+    //NSData *data = [NSData dataWithContentsOfURL:url];
+    //UIImage *image = [[UIImage alloc] initWithData:data];
+    
+   // self.image.image = image;
     
 //    [self.image setImageWithURL:[NSURL URLWithString:@"http://img.svgeps.com/clip2/nwn22gri0zm.png"]];
 
