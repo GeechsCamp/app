@@ -26,5 +26,7 @@
 
 -(void)setUpHandler:(id)target;
 -(CMAccelerometerHandler)handler;
+-(void)actSound;
+-(void)resetCount;
 
 @end
