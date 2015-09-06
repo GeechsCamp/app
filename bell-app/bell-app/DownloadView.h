@@ -17,6 +17,8 @@
 @property (nonatomic, retain)NSArray* datas;
 @property (nonatomic, copy)NSMutableDictionary* use_items;
 @property (nonatomic, copy)NSMutableArray* dl_items;
+@property (nonatomic,retain)UIAlertView* downloadConfirmAlert;
+@property (nonatomic,retain)NSString* selectedSoundID;
 
 - (IBAction)cancel:(id)sender;
 

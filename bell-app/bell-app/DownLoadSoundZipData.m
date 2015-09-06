@@ -12,7 +12,7 @@
 @implementation DownLoadSoundZipData
 
 
-+(void)downloadZipData:(NSString*)soundId {
++(void)downloadZipData:(NSString*)soundId SUCCESS:(SUCCESS)success {
 
     // http://geechscamp.xyz/zip_files/1.zip
     
@@ -71,6 +71,7 @@
                            fileManager = [[NSFileManager alloc]init];
                            [fileManager removeItemAtPath:tmpDirPath error:NULL];
                            
+                           success(true);
                            
                        }
                    }

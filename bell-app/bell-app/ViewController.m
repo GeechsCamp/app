@@ -42,7 +42,9 @@
     //※※ダウンロード用
     
      //これをダウンロードボタンおしたときに呼び出す
+    /*
      [DownLoadSoundZipData downloadZipData:@"1"]; //引数にサウンドIDを指定
+     */
     
 }
 

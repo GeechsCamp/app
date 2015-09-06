@@ -16,7 +16,7 @@ typedef void (^FAIL)(BOOL fail);
 
 @interface DownLoadSoundZipData : NSObject
 
-+(void)downloadZipData:(NSString*)soundId ;
++(void)downloadZipData:(NSString*)soundId SUCCESS:(SUCCESS)success;
 
 
 @end

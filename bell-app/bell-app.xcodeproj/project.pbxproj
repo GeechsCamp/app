@@ -34,6 +34,8 @@
 		EF26FF351B9B49DF00D5F338 /* instrumentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF331B9B49DF00D5F338 /* instrumentModel.xcdatamodeld */; };
 		EF26FF4E1B9BBF6C00D5F338 /* _Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF4B1B9BBF6C00D5F338 /* _Instruments.m */; };
 		EF26FF4F1B9BBF6C00D5F338 /* Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF4C1B9BBF6C00D5F338 /* Instruments.m */; };
+		EFD388BA1B9BCD3D000A2160 /* backgroiund.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EFD388B91B9BCD3D000A2160 /* backgroiund.jpg */; };
+		EFD388BE1B9BD4A2000A2160 /* 0315043006.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EFD388BD1B9BD4A2000A2160 /* 0315043006.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		EF26FF4B1B9BBF6C00D5F338 /* _Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Instruments.m; sourceTree = "<group>"; };
 		EF26FF4C1B9BBF6C00D5F338 /* Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruments.m; sourceTree = "<group>"; };
 		EF26FF4D1B9BBF6C00D5F338 /* Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruments.h; sourceTree = "<group>"; };
+		EFD388B91B9BCD3D000A2160 /* backgroiund.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroiund.jpg; sourceTree = "<group>"; };
+		EFD388BD1B9BD4A2000A2160 /* 0315043006.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0315043006.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,7 @@
 		B2356EF71B9A7C2000CCA4F2 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				EFD388B81B9BCD31000A2160 /* dummy */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -283,6 +288,15 @@
 				EF26FF331B9B49DF00D5F338 /* instrumentModel.xcdatamodeld */,
 			);
 			name = SQLiteData;
+			sourceTree = "<group>";
+		};
+		EFD388B81B9BCD31000A2160 /* dummy */ = {
+			isa = PBXGroup;
+			children = (
+				EFD388BD1B9BD4A2000A2160 /* 0315043006.jpg */,
+				EFD388B91B9BCD3D000A2160 /* backgroiund.jpg */,
+			);
+			name = dummy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +384,8 @@
 			files = (
 				B2356EDD1B9A7C0C00CCA4F2 /* Main.storyboard in Resources */,
 				B2356EFD1B9A7C5900CCA4F2 /* Main3.storyboard in Resources */,
+				EFD388BA1B9BCD3D000A2160 /* backgroiund.jpg in Resources */,
+				EFD388BE1B9BD4A2000A2160 /* 0315043006.jpg in Resources */,
 				CC2D3CD41B9AB2E90006A9F0 /* 01.png in Resources */,
 				B2356EE21B9A7C0C00CCA4F2 /* LaunchScreen.xib in Resources */,
 				B2356EFB1B9A7C4B00CCA4F2 /* Main2.storyboard in Resources */,

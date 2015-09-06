@@ -10,13 +10,12 @@
 #import "DownloadCell.h"
 #import "dummy_data.h"
 #import <MagicalRecord.h>
-
+#import "DownLoadSoundZipData.h"
 
 
 
 @interface DownloadView ()
 
-@property (nonatomic, copy)NSNumber *selected_id;
 
 @end
 
@@ -26,9 +25,44 @@
     [super viewDidLoad];
     
     [self CreateAllSoundsLocalData];
-    
-    [self setDummyData];
+
 }
+
+
+-(void)saveDownloadedSoundID:(NSString*)soundID{
+    
+    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+    NSArray* savedArray = [ud objectForKey:@"SoundID"];
+
+    NSMutableArray* array = [savedArray mutableCopy];
+    if(array == nil) {
+        array = [NSMutableArray array];
+    }
+    [array addObject:soundID];
+    savedArray = [array copy];
+    
+    [ud setObject:savedArray forKey:@"SoundID"];
+    [ud synchronize];
+
+}
+
+
+-(BOOL)getIfDownloadedSoundID :(NSString*)soundID {
+    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+    NSArray* savedArray = [ud objectForKey:@"SoundID"];
+    
+    int i;
+    BOOL alreadyDownloaded = false;
+    for(i=0; i<savedArray.count; i++) {
+        
+        if([[savedArray objectAtIndex:i] isEqualToString:soundID]){
+            alreadyDownloaded = YES;
+        }
+    }
+    
+    return alreadyDownloaded;
+}
+
 
 
 -(void)CreateAllSoundsLocalData {
@@ -93,61 +127,113 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"downloadCell" forIndexPath:indexPath];
-    
+
     DownloadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"downloadCell" forIndexPath:indexPath];
     
-//    NSString *key = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-//    cell.textLabel.text = self.datas[key][@"name"];
-    
-    //NSDictionary *data = [self.datas objectAtIndex:indexPath.row];
     NSArray* array = [Instruments MR_findAll];
     Instruments* instrument = [array objectAtIndex:indexPath.row];
     NSLog(@"名前=%@",instrument.name);
     [cell setDataOfRow:instrument];
     
+    if([self getIfDownloadedSoundID:instrument.id]) {
+        cell.download.alpha = 0.0f;
+        cell.statusLabel.alpha = 1.0f;
+    }
+    else {
+        cell.statusLabel.alpha = 0.0f;
+        cell.download.alpha = 1.0f;
+    }
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *data = [self.datas objectAtIndex:indexPath.row];
-    self.selected_id = data[@"id"];
     
-//    NSInteger item_id = (long)data[@"id"];
+    NSArray* array = [Instruments MR_findAll];
+    Instruments* instrument = [array objectAtIndex:indexPath.row];
     
-    // 選択された楽器がダウンロードされてるかを判定
-//    BOOL is_dl = NO;
-//    for (id dl_item in self.dl_items) {
-//        if (item_id == dl_item) {
-//            is_dl = YES;
-//            break;
-//        }
-//    }
-//    if (!is_dl) return;
+    _selectedSoundID = instrument.id;
     
-    // ダウンロードされてた場合、設定するアラートを出す
-    [self showAlertAction];
+    //すでにダウンロード済みかチェック
+    BOOL ifAlreadyDownloaded = [self getIfDownloadedSoundID:instrument.id];
+    
+    if(ifAlreadyDownloaded) {
+        
+        //たみちゃんの選択アクションシートを表示
+        [self showAlertAction:(int)[_selectedSoundID integerValue]];
+        
+    }
+    else { //ダウンロードしてない場合は、ダウンロード確認モーダルを出してダウンロード
+        
+        NSString* instrumentName = instrument.name;
+        NSString* confirmMessage = [NSString stringWithFormat:@"Do you want to download [%@]?",instrumentName];
+        _downloadConfirmAlert = [[UIAlertView alloc]initWithTitle:confirmMessage message:@"" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        [_downloadConfirmAlert show];
+        
+    }
+
 }
 
 
-- (void)showAlertAction {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"楽器設定" message:@"メイン画面で使える楽器をセットします。" preferredStyle:UIAlertControllerStyleActionSheet];
+-(void)showDownLoadedAlert{
+    //アラートビュー
+    NSString* message = [NSString stringWithFormat:@"Download Completed!"];
+    UIAlertView* alert =[[UIAlertView alloc]initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    [alertController addAction:[UIAlertAction actionWithTitle:@"1のボタンに設定する" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+    if (alertView == _downloadConfirmAlert) {
+        __block __weak typeof(self)weakself = self;
+        switch (buttonIndex) {
+            case 0:
+                //キャンセル
+                break;
+            case 1:
+                
+                //zipダウンロード処理実行
+                [DownLoadSoundZipData downloadZipData:_selectedSoundID SUCCESS:^(BOOL success) {
+                    
+                    [weakself showDownLoadedAlert];
+                    [weakself saveDownloadedSoundID:_selectedSoundID];
+                    
+                    [weakself.tableView reloadData];
+                    
+                    
+                }];
+                break;
+        }
+        
+    }
+    
+
+    
+}
+
+
+
+
+
+- (void)showAlertAction:(int)soundID {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Instrument  Setting" message:@"You can set this for Main Instrument" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Set for No.1" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // otherボタンが押された時の処理
         [self otherButtonPushed:(NSInteger *)1];
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"2のボタンに設定する" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Set for No.2" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // otherボタンが押された時の処理
         [self otherButtonPushed:(NSInteger *)2];
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"3のボタンに設定する" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Set for No.3" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // otherボタンが押された時の処理
         [self otherButtonPushed:(NSInteger *)2];
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         return;
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
@@ -157,97 +243,9 @@
     // 選択された番号をuse_itemsに更新
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be .
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-
 - (void)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)setDummyData {
-    
-    // 楽器データ APIでもらう
-    NSDictionary *data01 = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @0,@"id",
-                            @"handbell_01",@"name",
-                            @"ハンドベルです",@"detail",
-                            @"0",@"category_id",
-                            @"http://img.svgeps.com/clip2/nwn22gri0zm.png",@"image_url",
-                            @0,@"del_flg",
-                            @000,@"created_date",
-                            @000,@"updated_date",
-                            nil];
-    NSDictionary *data02 = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @1,@"id",
-                            @"handbell_02",@"name",
-                            @"ハンドベルですお",@"detail",
-                            @"1",@"category_id",
-                            @"http://www.brass.co.jp/images/item/650190.jpg",@"image_url",
-                            @0,@"del_flg",
-                            @000,@"created_date",
-                            @000,@"updated_date",
-                            nil];
-    NSMutableArray *datas = [[NSMutableArray alloc]init];
-    [datas addObject:data01];
-    [datas addObject:data02];
-    self.datas = datas;
-    
-    // use_items - 使用中の楽器の情報
-    // @楽器順の番号:@楽器id
-    NSMutableDictionary *use_items = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                            @1,@0,
-                            @2,@1,
-                            @3,@0,
-    nil];
-    self.use_items = use_items;
-    
-    // dl_items - ダウンロードされた楽器情報+zipデータ
-    // @id
-    NSMutableArray *dl_items = [NSMutableArray arrayWithObjects:@0,nil];
-    self.dl_items = dl_items;
-}
 
 @end
