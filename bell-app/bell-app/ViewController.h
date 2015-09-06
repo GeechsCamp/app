@@ -14,6 +14,7 @@
 #import "RecognizePhoneWave.h"
 #import "CustomMotionManager.h"
 #import "Instruments.h"
+#import "CustomAnimationManager.h"
 
 @interface ViewController : UIViewController
 
