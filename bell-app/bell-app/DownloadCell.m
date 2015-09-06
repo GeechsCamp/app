@@ -7,17 +7,22 @@
 //
 
 #import "DownloadCell.h"
+#import <MagicalRecord.h>
 
 @implementation DownloadCell
 
 
-- (void)setDataOfRow:(NSDictionary *)dataOfRow {
+//- (void)setDataOfRow:(NSDictionary *)dataOfRow {
+-(void)setDataOfRow:(Instruments*)instrument {
     
 //    [self initFont];
     
     //string系の表示
-    self.nameLabel.text = dataOfRow[@"name"];
-    self.descriptionLabel.text = dataOfRow[@"detail"];
+    NSLog(@"%@",instrument.name);
+    
+    self.nameLabel.text = instrument.name;
+    self.descriptionLabel.text = instrument.detail;
+    self.categoryLabel.text = instrument.category_name;
     
     // 使用中の楽器dicのidと照合してif分岐
     self.statusLabel.text = @"設定中";
@@ -28,7 +33,7 @@
 //    [self.image setImageWithURL:[NSURL URLWithString:dataOfRow[@"image_url"]]];
 //    UIImageView *test;
     
-    NSURL *url = [NSURL URLWithString:dataOfRow[@"image_url"]];
+    NSURL *url = [NSURL URLWithString:instrument.image_url];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [[UIImage alloc] initWithData:data];
     

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Instruments.h"
 
 @interface DownloadCell : UITableViewCell
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *useitembtn;
 - (IBAction)useitem:(id)sender;
 
-- (void)setDataOfRow:(NSDictionary *)dataOfRow;
+//- (void)setDataOfRow:(NSDictionary *)dataOfRow;
+-(void)setDataOfRow:(Instruments*)instrument;
 
 @end

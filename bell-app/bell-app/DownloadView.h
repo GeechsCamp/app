@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <AFHTTPSessionManager.h>
+#import "Instruments.h"
+
+
 
 @interface DownloadView : UITableViewController
 
-@property (nonatomic, copy)NSArray* datas;
+@property (nonatomic, retain)NSArray* datas;
 @property (nonatomic, copy)NSMutableDictionary* use_items;
 @property (nonatomic, copy)NSMutableArray* dl_items;
 

@@ -32,7 +32,8 @@
 		EF26FF2D1B9B3CCA00D5F338 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF271B9B3CCA00D5F338 /* unzip.c */; };
 		EF26FF2E1B9B3CCA00D5F338 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF291B9B3CCA00D5F338 /* zip.c */; };
 		EF26FF351B9B49DF00D5F338 /* instrumentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF331B9B49DF00D5F338 /* instrumentModel.xcdatamodeld */; };
-		EF26FF381B9B4C3A00D5F338 /* Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF371B9B4C3A00D5F338 /* Instruments.m */; };
+		EF26FF4E1B9BBF6C00D5F338 /* _Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF4B1B9BBF6C00D5F338 /* _Instruments.m */; };
+		EF26FF4F1B9BBF6C00D5F338 /* Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = EF26FF4C1B9BBF6C00D5F338 /* Instruments.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +94,12 @@
 		EF26FF291B9B3CCA00D5F338 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		EF26FF2A1B9B3CCA00D5F338 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		EF26FF341B9B49DF00D5F338 /* instrumentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = instrumentModel.xcdatamodel; sourceTree = "<group>"; };
-		EF26FF361B9B4C3A00D5F338 /* Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruments.h; sourceTree = "<group>"; };
-		EF26FF371B9B4C3A00D5F338 /* Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruments.m; sourceTree = "<group>"; };
+		EF26FF401B9B627400D5F338 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EF26FF421B9B665000D5F338 /* libMagicalRecord.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMagicalRecord.a; path = "Pods/../build/Debug-iphoneos/libMagicalRecord.a"; sourceTree = "<group>"; };
+		EF26FF4A1B9BBF6C00D5F338 /* _Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Instruments.h; sourceTree = "<group>"; };
+		EF26FF4B1B9BBF6C00D5F338 /* _Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Instruments.m; sourceTree = "<group>"; };
+		EF26FF4C1B9BBF6C00D5F338 /* Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruments.m; sourceTree = "<group>"; };
+		EF26FF4D1B9BBF6C00D5F338 /* Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruments.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +230,8 @@
 		CEECCDA7A1BD8CF0E2207431 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF26FF421B9B665000D5F338 /* libMagicalRecord.a */,
+				EF26FF401B9B627400D5F338 /* CoreData.framework */,
 				EF26FF1F1B9B3CAC00D5F338 /* libz.1.2.5.dylib */,
 				5D6EDA082A064DCF1C1259B1 /* libPods.a */,
 			);
@@ -269,9 +276,11 @@
 		EF26FF2F1B9B46B400D5F338 /* SQLiteData */ = {
 			isa = PBXGroup;
 			children = (
+				EF26FF4A1B9BBF6C00D5F338 /* _Instruments.h */,
+				EF26FF4B1B9BBF6C00D5F338 /* _Instruments.m */,
+				EF26FF4C1B9BBF6C00D5F338 /* Instruments.m */,
+				EF26FF4D1B9BBF6C00D5F338 /* Instruments.h */,
 				EF26FF331B9B49DF00D5F338 /* instrumentModel.xcdatamodeld */,
-				EF26FF361B9B4C3A00D5F338 /* Instruments.h */,
-				EF26FF371B9B4C3A00D5F338 /* Instruments.m */,
 			);
 			name = SQLiteData;
 			sourceTree = "<group>";
@@ -415,10 +424,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF26FF4F1B9BBF6C00D5F338 /* Instruments.m in Sources */,
 				EF26FF161B9B3BE200D5F338 /* Main2ViewController.m in Sources */,
 				B2356EDA1B9A7C0C00CCA4F2 /* ViewController.m in Sources */,
+				EF26FF4E1B9BBF6C00D5F338 /* _Instruments.m in Sources */,
 				EF26FF171B9B3BE200D5F338 /* RecognizePhoneWave.m in Sources */,
-				EF26FF381B9B4C3A00D5F338 /* Instruments.m in Sources */,
 				EF26FF2E1B9B3CCA00D5F338 /* zip.c in Sources */,
 				CC2D3CD11B9AB0020006A9F0 /* modules.m in Sources */,
 				CC2225071B9AE801007D95D7 /* DownloadView.m in Sources */,

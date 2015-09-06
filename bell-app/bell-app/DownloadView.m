@@ -9,8 +9,9 @@
 #import "DownloadView.h"
 #import "DownloadCell.h"
 #import "dummy_data.h"
-#import <CoreData/CoreData.h>
-#import "Instruments.h"
+#import <MagicalRecord.h>
+
+
 
 
 @interface DownloadView ()
@@ -24,35 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getAllSoundsData];
+    [self CreateAllSoundsLocalData];
     
     [self setDummyData];
 }
 
 
--(void)getAllSoundsData {
-    
-    NSString* urlString = @"http://geechscamp.xyz/gc_instruments";
-    
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    
-//    __block __weak typeof(self)weakself = self;
-//    
-//    [manager GET:urlString
-//      parameters:nil
-//         success:^(NSURLSessionDataTask *task, id responseObject) {
-//             // 通信に成功した場合の処理
-//             
-//             NSLog(@"獲得jsondata == %@",responseObject);
-//             
-//             
-//         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//             // エラーの場合はエラーの内容をコンソールに出力する
-//             NSLog(@"Error: %@", error);
-//         }];
-    
-    
-    
+-(void)CreateAllSoundsLocalData {
     
     NSURL *url = [NSURL URLWithString:@"http://geechscamp.xyz/gc_instruments/"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -62,41 +41,31 @@
     NSData *json_data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     // データが取得できた場合
+    NSArray *jsonArray;
     if (json_data != nil) {
-        NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"array==%@",jsonObject);
+        jsonArray = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"array==%@",jsonArray);
         
-        self.datas = jsonObject;
     }
     
-    
-    
-    
-    //Instruments* instruments =
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    int i;
+    for(i=0; i < jsonArray.count; i++) {
+        
+        Instruments* instruments = [Instruments MR_createEntity];
+        NSDictionary* dic = [jsonArray objectAtIndex:i];
+        
+        NSLog(@"%@",[dic objectForKey:@"id"]);
+        
+        instruments.id = [dic objectForKey:@"id"];
+        instruments.category_name  = [dic objectForKey:@"category_name"];
+        instruments.image_url = [dic objectForKey:@"image_url"];
+        instruments.name = [dic objectForKey:@"name"];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    }
+    NSLog(@"ローカルデータ==%@",self.datas);
     
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -117,7 +86,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.datas.count;
+    
+    NSArray* array = [Instruments MR_findAll];
+    return array.count;
 }
 
 
@@ -130,8 +101,12 @@
 //    NSString *key = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
 //    cell.textLabel.text = self.datas[key][@"name"];
     
-    NSDictionary *data = [self.datas objectAtIndex:indexPath.row];
-    [cell setDataOfRow:data];
+    //NSDictionary *data = [self.datas objectAtIndex:indexPath.row];
+    NSArray* array = [Instruments MR_findAll];
+    Instruments* instrument = [array objectAtIndex:indexPath.row];
+    NSLog(@"名前=%@",instrument.name);
+    [cell setDataOfRow:instrument];
+    
     
     return cell;
 }
