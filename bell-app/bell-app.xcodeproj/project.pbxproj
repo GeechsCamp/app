@@ -58,6 +58,7 @@
 		EFD388FC1B9C11F7000A2160 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD388EC1B9C11F6000A2160 /* UIView+WebCacheOperation.m */; };
 		EFD389021B9C132C000A2160 /* CustomAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD389011B9C132C000A2160 /* CustomAnimationView.m */; };
 		EFD389051B9C1340000A2160 /* CustomAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD389041B9C1340000A2160 /* CustomAnimationManager.m */; };
+		EFD389071B9C1A3E000A2160 /* topimg1.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD389061B9C1A3E000A2160 /* topimg1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		EFD389011B9C132C000A2160 /* CustomAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnimationView.m; sourceTree = "<group>"; };
 		EFD389031B9C1340000A2160 /* CustomAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnimationManager.h; sourceTree = "<group>"; };
 		EFD389041B9C1340000A2160 /* CustomAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnimationManager.m; sourceTree = "<group>"; };
+		EFD389061B9C1A3E000A2160 /* topimg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topimg1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 		B2356EF71B9A7C2000CCA4F2 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				EFD389061B9C1A3E000A2160 /* topimg1.png */,
 				EFD388B81B9BCD31000A2160 /* dummy */,
 			);
 			name = resources;
@@ -504,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2356EDD1B9A7C0C00CCA4F2 /* Main.storyboard in Resources */,
+				EFD389071B9C1A3E000A2160 /* topimg1.png in Resources */,
 				B2356EFD1B9A7C5900CCA4F2 /* Main3.storyboard in Resources */,
 				EFD388BA1B9BCD3D000A2160 /* backgroiund.jpg in Resources */,
 				EFD388BE1B9BD4A2000A2160 /* 0315043006.jpg in Resources */,
