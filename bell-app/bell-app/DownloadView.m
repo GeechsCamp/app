@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setSelectedItems];
     [self CreateAllSoundsLocalData];
 
 }
@@ -234,15 +235,15 @@
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Set for No.1" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // otherボタンが押された時の処理
-        [self otherButtonPushed:(NSInteger *)1];
+        [self otherButtonPushed:(NSString *)@"1"];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Set for No.2" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // otherボタンが押された時の処理
-        [self otherButtonPushed:(NSInteger *)2];
+        [self otherButtonPushed:(NSString *)@"2"];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Set for No.3" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // otherボタンが押された時の処理
-        [self otherButtonPushed:(NSInteger *)2];
+        [self otherButtonPushed:(NSString *)@"3"];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         return;
@@ -250,12 +251,25 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)otherButtonPushed:(NSInteger*)index {
+- (void)otherButtonPushed:(NSString*)index {
     // 選択された番号をuse_itemsに更新
+    self.use_items[index] = _selectedIndexPath;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.use_items forKey:@"use_items"];
+    [defaults synchronize];
 }
 
 - (void)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setSelectedItems {
+    // 選択されている楽器を読み込む
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults dataForKey:@"use_items"] != nil) {
+        self.use_items = [NSKeyedUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"use_items"]];
+    }
 }
 
 

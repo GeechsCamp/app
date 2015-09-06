@@ -13,6 +13,7 @@
 #import <AFNetworking.h>
 #import "RecognizePhoneWave.h"
 #import "CustomMotionManager.h"
+#import "Instruments.h"
 
 @interface ViewController : UIViewController
 
@@ -21,7 +22,7 @@
 @property (nonatomic,retain)UILabel* yLabel;
 @property (nonatomic,retain)UILabel* zLabel;
 @property (nonatomic,retain)NSMutableDictionary*use_items_top;
-@property (nonatomic,retain)NSNumber* selected_item;
+@property (nonatomic,retain)NSString* selected_item;
 
 @property (weak, nonatomic) IBOutlet UIButton *item_1;
 - (IBAction)tapItem_1:(id)sender;

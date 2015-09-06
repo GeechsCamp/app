@@ -12,8 +12,6 @@
 #import <AFHTTPRequestOperation.h>
 #import <MagicalRecord.h>
 
-#import "DownloadView.h" //TODO: あとで消す
-
 @interface ViewController ()
 {
     CGSize screenFrame;
@@ -25,12 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setSelectedItems];
+}
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self setSelectedItems];
+    
     // ボタンを描画
     [self ShowItemButton];
-    
     
     screenFrame = self.view.bounds.size;
     _motionManager = [[CustomMotionManager alloc] init];
@@ -38,14 +37,6 @@
     
     CGRect rect = CGRectMake(0, 0, screenFrame.width/2, screenFrame.height/2);
     [self MakeShowUILabels:rect];
-    
-    //※※ダウンロード用
-    
-     //これをダウンロードボタンおしたときに呼び出す
-    /*
-     [DownLoadSoundZipData downloadZipData:@"1"]; //引数にサウンドIDを指定
-     */
-    
 }
 
 -(void)ShowItemButton {
@@ -60,6 +51,11 @@
     [self.item_3 setImage:[self returnImage:item_3.image_url] forState:UIControlStateNormal];
     
     // 選択されてるやつは光る
+    if ([self.selected_item isEqual:@"1"]) [self.item_1 setBackgroundColor:[UIColor yellowColor]];
+    if ([self.selected_item isEqual:@"2"]) [self.item_2 setBackgroundColor:[UIColor yellowColor]];
+    if ([self.selected_item isEqual:@"3"]) [self.item_3 setBackgroundColor:[UIColor yellowColor]];
+    
+    // ここにid渡して音を変える処理 - ひできさんおねがいします
 }
 
 
@@ -89,8 +85,6 @@
     self.yLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
     self.zLabel.text = [NSString stringWithFormat:@"z: %f", zac];
     self.zLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
-
-
 }
 
 - (void)setupAccelerometer{
@@ -113,10 +107,10 @@
     } else {
         // 初回起動時はデフォルト値を保存
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                    @0,@"1",
+                                    @5,@"1",
                                     @1,@"2",
                                     @2,@"3",
-                                    nil];
+                                nil];
         self.use_items_top = dic;
         [defaults setObject:dic forKey:@"use_items"];
         [defaults synchronize];
@@ -127,12 +121,11 @@
         self.selected_item = [NSKeyedUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"selected"]];
     } else {
         // 初回起動時はデフォルト値を保存
-        NSNumber *selected_item = @1;
+        NSString *selected_item = @"0";
         self.selected_item = selected_item;
         [defaults setObject:selected_item forKey:@"selected_item"];
         [defaults synchronize];
     }
-
 }
 
 -(void)tapItem_1:(id)sender {[self tapItemAction:1];}
@@ -142,40 +135,12 @@
 -(void)tapItemAction:(NSInteger)index {
     // 押されたボタンを光らせる
     
-    // 選択されたデータを変更
-
-}
-
-
-// あとで消す
-- (NSMutableArray *)returnDummyData {
     
-    // 楽器データ APIでもらう
-    NSDictionary *data01 = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @0,@"id",
-                            @"handbell_01",@"name",
-                            @"ハンドベルです",@"detail",
-                            @"0",@"category_id",
-                            @"http://img.svgeps.com/clip2/nwn22gri0zm.png",@"image_url",
-                            @0,@"del_flg",
-                            @000,@"created_date",
-                            @000,@"updated_date",
-                            nil];
-    NSDictionary *data02 = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @1,@"id",
-                            @"handbell_02",@"name",
-                            @"ハンドベルですお",@"detail",
-                            @"1",@"category_id",
-                            @"http://www.brass.co.jp/images/item/650190.jpg",@"image_url",
-                            @0,@"del_flg",
-                            @000,@"created_date",
-                            @000,@"updated_date",
-                            nil];
-    NSMutableArray *datas = [[NSMutableArray alloc]init];
-    [datas addObject:data01];
-    [datas addObject:data02];
-    return datas;
+    // 選択されたデータを変更 - HIDEKI☆
+    // self.selected_item(string) が選んでる番号
 }
+
+
 
 -(UIImage *)returnImage:(NSString *)url_string {
     // キャッシュあったらそこから読み込むよ
@@ -185,6 +150,8 @@
     // キャッシュしてないならするよ
     return image;
 }
+
+
 
 
 @end
