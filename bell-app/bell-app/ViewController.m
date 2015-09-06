@@ -116,7 +116,7 @@
     } else {
         // 初回起動時はデフォルト値を保存
         NSDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                    @5,@"1",
+                                    @0,@"1",
                                     @1,@"2",
                                     @2,@"3",
                                 nil];
@@ -130,22 +130,22 @@
         self.selected_item = [defaults objectForKey:@"selected"];
     } else {
         // 初回起動時はデフォルト値を保存
-        NSString *selected_item = @"0";
+        NSString *selected_item = @"1";
         self.selected_item = selected_item;
         [defaults setObject:selected_item forKey:@"selected_item"];
         [defaults synchronize];
     }
 }
 
--(void)tapItem_1:(id)sender {[self tapItemAction:1];}
--(void)tapItem_2:(id)sender {[self tapItemAction:2];}
--(void)tapItem_3:(id)sender {[self tapItemAction:3];}
+-(void)tapItem_1:(id)sender {[self tapItemAction:@"1"];}
+-(void)tapItem_2:(id)sender {[self tapItemAction:@"2"];}
+-(void)tapItem_3:(id)sender {[self tapItemAction:@"3"];}
 
--(void)tapItemAction:(NSInteger)index {
-    // 押されたボタンを光らせる
+-(void)tapItemAction:(NSString *)index {
+    self.selected_item = [self.use_items_top objectForKey:index];
+    // selected_itemが選択されているsoundId
     
-    
-    // 選択されたデータを変更 - HIDEKI☆
+    // 選択されたデータを変更
     // self.selected_item(string) が選んでる番号
 }
 
