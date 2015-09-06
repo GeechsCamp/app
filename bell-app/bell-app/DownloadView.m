@@ -251,12 +251,13 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)otherButtonPushed:(NSString*)index {
+
+
+- (void)otherButtonPushed:(NSString*)registerNum {
     // 選択された番号をuse_itemsに更新
-    self.use_items[index] = _selectedIndexPath;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.use_items forKey:@"use_items"];
+    [defaults setObject:_selectedSoundID forKey:registerNum];
     [defaults synchronize];
 }
 
