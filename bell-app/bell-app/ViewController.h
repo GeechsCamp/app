@@ -21,5 +21,15 @@
 @property (nonatomic,retain)UILabel* zLabel;
 @property (nonatomic,retain)AVAudioPlayer* audioPlayer;
 
+@property (nonatomic,retain)NSMutableDictionary*use_items_top;
+@property (nonatomic,retain)NSNumber* selected_item;
+
+@property (weak, nonatomic) IBOutlet UIButton *item_1;
+- (IBAction)tapItem_1:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *item_2;
+- (IBAction)tapItem_2:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *item_3;
+- (IBAction)tapItem_3:(id)sender;
+
 @end
 

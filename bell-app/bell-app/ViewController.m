@@ -11,6 +11,8 @@
 #import "GetAudioSound.h"
 #import <AFHTTPRequestOperation.h>
 
+#import "DownloadView.h" //TODO: あとで消す
+
 @interface ViewController ()
 {
     CGSize screenFrame;
@@ -23,6 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setSelectedItems];
+
+    // ボタンを描画
+    [self ShowItemButton];
     
     screenFrame = self.view.bounds.size;
     _motionManager = [[CMMotionManager alloc] init];
@@ -38,7 +45,24 @@
     
 }
 
+-(void)ShowItemButton {
+    // テストコード(本当はsqlite呼び出す
+    NSMutableArray* datas = [self returnDummyData];
 
+    // 画像を呼ぶ
+    for (NSNumber* use_item in self.use_items_top) {
+//        NSDictionary* dic = [datas objectAtIndex: use_item.integerValue];
+//        
+//        // TODO:要修正
+//        NSURL *url = [NSURL URLWithString:dic[@"image_url"]];
+//        NSData *data = [NSData dataWithContentsOfURL:url];
+//        UIImage *image = [[UIImage alloc] initWithData:data];
+//        
+//        self.item_1.imageView.image = image;
+    }
+    
+    // 選択されてるやつは光る
+}
 
 
 
@@ -150,6 +174,78 @@
     [_audioPlayer play];
     
     isPlay = YES;
+}
+
+-(void)setSelectedItems {
+    // 選択されている楽器を読み込む
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults dataForKey:@"use_items"] != nil) {
+        self.use_items_top = [NSKeyedUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"use_items"]];
+    } else {
+        // 初回起動時はデフォルト値を保存
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                    @0,@"1",
+                                    @1,@"2",
+                                    @2,@"3",
+                                    nil];
+        self.use_items_top = dic;
+        [defaults setObject:dic forKey:@"use_items"];
+        [defaults synchronize];
+    }
+    
+    //今鳴る楽器を呼ぶ
+    if ([defaults dataForKey:@"selected_item"] != nil) {
+        self.selected_item = [NSKeyedUnarchiver unarchiveObjectWithData:[defaults dataForKey:@"selected"]];
+    } else {
+        // 初回起動時はデフォルト値を保存
+        NSNumber *selected_item = @1;
+        self.selected_item = selected_item;
+        [defaults setObject:selected_item forKey:@"selected_item"];
+        [defaults synchronize];
+    }
+
+}
+
+-(void)tapItem_1:(id)sender {[self tapItemAction:1];}
+-(void)tapItem_2:(id)sender {[self tapItemAction:2];}
+-(void)tapItem_3:(id)sender {[self tapItemAction:3];}
+
+-(void)tapItemAction:(NSInteger)index {
+    // 押されたボタンを光らせる
+    
+    // 選択されたデータを変更
+
+}
+
+
+// あとで消す
+- (NSMutableArray *)returnDummyData {
+    
+    // 楽器データ APIでもらう
+    NSDictionary *data01 = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @0,@"id",
+                            @"handbell_01",@"name",
+                            @"ハンドベルです",@"detail",
+                            @"0",@"category_id",
+                            @"http://img.svgeps.com/clip2/nwn22gri0zm.png",@"image_url",
+                            @0,@"del_flg",
+                            @000,@"created_date",
+                            @000,@"updated_date",
+                            nil];
+    NSDictionary *data02 = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @1,@"id",
+                            @"handbell_02",@"name",
+                            @"ハンドベルですお",@"detail",
+                            @"1",@"category_id",
+                            @"http://www.brass.co.jp/images/item/650190.jpg",@"image_url",
+                            @0,@"del_flg",
+                            @000,@"created_date",
+                            @000,@"updated_date",
+                            nil];
+    NSMutableArray *datas = [[NSMutableArray alloc]init];
+    [datas addObject:data01];
+    [datas addObject:data02];
+    return datas;
 }
 
 

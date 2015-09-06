@@ -18,6 +18,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-QR-ctA">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.96631946759999998" blue="0.75529822020000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="167-eM-Dhd"/>
+                                    <constraint firstAttribute="width" constant="50" id="Mee-ia-F8f"/>
+                                    <constraint firstAttribute="height" constant="50" id="k1X-jE-pwn"/>
+                                </constraints>
+                                <state key="normal" title="楽器2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="167-eM-Dhd"/>
+                                        <exclude reference="Mee-ia-F8f"/>
+                                        <exclude reference="k1X-jE-pwn"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="167-eM-Dhd"/>
+                                        <include reference="Mee-ia-F8f"/>
+                                        <include reference="k1X-jE-pwn"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="tapItem_2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Hb-tD-9th"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zh-F3-yli">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.77657331333189739" green="1" blue="0.96182722152570888" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="JVX-oJ-x3q"/>
+                                    <constraint firstAttribute="height" constant="50" id="z7s-bd-Doc"/>
+                                </constraints>
+                                <state key="normal" title="設定">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JVX-oJ-x3q"/>
+                                        <exclude reference="z7s-bd-Doc"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="JVX-oJ-x3q"/>
+                                        <include reference="z7s-bd-Doc"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="0sw-cd-puc" kind="modal" id="9az-lC-oAw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-X6-6yo">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.96631946759999998" blue="0.75529822020000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NG2-dn-B1E"/>
+                                    <constraint firstAttribute="width" constant="50" id="RGk-DB-71s"/>
+                                    <constraint firstAttribute="height" constant="30" id="wcH-Z7-GzE"/>
+                                </constraints>
+                                <state key="normal" title="楽器3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NG2-dn-B1E"/>
+                                        <exclude reference="RGk-DB-71s"/>
+                                        <exclude reference="wcH-Z7-GzE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="NG2-dn-B1E"/>
+                                        <include reference="RGk-DB-71s"/>
+                                        <exclude reference="wcH-Z7-GzE"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="tapItem_3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IFb-pw-ooJ"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPq-DO-Bom">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.9663194676454685" blue="0.75529822021596282" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,92 +120,17 @@
                                         <exclude reference="R2K-rK-EQS"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="314" y="44" width="50" height="50"/>
                                     <mask key="constraints">
                                         <include reference="9Zl-j5-lag"/>
                                         <include reference="HY9-1I-co3"/>
                                         <exclude reference="R2K-rK-EQS"/>
                                     </mask>
                                 </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-X6-6yo">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.96631946759999998" blue="0.75529822020000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="NG2-dn-B1E"/>
-                                    <constraint firstAttribute="width" constant="50" id="RGk-DB-71s"/>
-                                    <constraint firstAttribute="height" constant="30" id="wcH-Z7-GzE"/>
-                                </constraints>
-                                <state key="normal" title="楽器3">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="RGk-DB-71s"/>
-                                        <exclude reference="NG2-dn-B1E"/>
-                                        <exclude reference="wcH-Z7-GzE"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="RGk-DB-71s"/>
-                                        <include reference="NG2-dn-B1E"/>
-                                        <exclude reference="wcH-Z7-GzE"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zh-F3-yli">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.77657331333189739" green="1" blue="0.96182722152570888" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="JVX-oJ-x3q"/>
-                                    <constraint firstAttribute="height" constant="50" id="z7s-bd-Doc"/>
-                                </constraints>
-                                <state key="normal" title="設定">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="JVX-oJ-x3q"/>
-                                        <exclude reference="z7s-bd-Doc"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="313" y="248" width="50" height="50"/>
-                                    <mask key="constraints">
-                                        <include reference="JVX-oJ-x3q"/>
-                                        <include reference="z7s-bd-Doc"/>
-                                    </mask>
-                                </variation>
                                 <connections>
-                                    <segue destination="0sw-cd-puc" kind="modal" id="9az-lC-oAw"/>
+                                    <action selector="tapItem_1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XcC-m2-IQF"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-QR-ctA">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.96631946759999998" blue="0.75529822020000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="167-eM-Dhd"/>
-                                    <constraint firstAttribute="width" constant="50" id="Mee-ia-F8f"/>
-                                    <constraint firstAttribute="height" constant="50" id="k1X-jE-pwn"/>
-                                </constraints>
-                                <state key="normal" title="楽器2">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Mee-ia-F8f"/>
-                                        <exclude reference="k1X-jE-pwn"/>
-                                        <exclude reference="167-eM-Dhd"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Mee-ia-F8f"/>
-                                        <include reference="k1X-jE-pwn"/>
-                                        <exclude reference="167-eM-Dhd"/>
-                                    </mask>
-                                </variation>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -137,41 +146,46 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="vPq-DO-Bom"/>
-                                <exclude reference="MfF-X6-6yo"/>
-                                <exclude reference="2zh-F3-yli"/>
                                 <exclude reference="2Dc-QR-ctA"/>
+                                <exclude reference="2zh-F3-yli"/>
+                                <exclude reference="MfF-X6-6yo"/>
+                                <exclude reference="vPq-DO-Bom"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8H2-zP-ovz"/>
-                                <exclude reference="jwB-Fb-SjX"/>
                                 <exclude reference="P6v-Z0-UcN"/>
                                 <exclude reference="YgX-N7-2cF"/>
-                                <exclude reference="7SU-zE-F1P"/>
-                                <exclude reference="E9g-at-Uuk"/>
                                 <exclude reference="WxS-I2-HZR"/>
                                 <exclude reference="bte-Cs-244"/>
+                                <exclude reference="7SU-zE-F1P"/>
+                                <exclude reference="E9g-at-Uuk"/>
+                                <exclude reference="8H2-zP-ovz"/>
+                                <exclude reference="jwB-Fb-SjX"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="vPq-DO-Bom"/>
-                                <include reference="MfF-X6-6yo"/>
-                                <include reference="2zh-F3-yli"/>
                                 <include reference="2Dc-QR-ctA"/>
+                                <include reference="2zh-F3-yli"/>
+                                <include reference="MfF-X6-6yo"/>
+                                <include reference="vPq-DO-Bom"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8H2-zP-ovz"/>
-                                <include reference="jwB-Fb-SjX"/>
                                 <include reference="P6v-Z0-UcN"/>
                                 <include reference="YgX-N7-2cF"/>
-                                <include reference="7SU-zE-F1P"/>
-                                <include reference="E9g-at-Uuk"/>
                                 <include reference="WxS-I2-HZR"/>
                                 <include reference="bte-Cs-244"/>
+                                <include reference="7SU-zE-F1P"/>
+                                <include reference="E9g-at-Uuk"/>
+                                <include reference="8H2-zP-ovz"/>
+                                <include reference="jwB-Fb-SjX"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="item_1" destination="vPq-DO-Bom" id="0jP-Ry-JwL"/>
+                        <outlet property="item_2" destination="2Dc-QR-ctA" id="ohb-jk-q7a"/>
+                        <outlet property="item_3" destination="MfF-X6-6yo" id="V4G-XF-XXl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
