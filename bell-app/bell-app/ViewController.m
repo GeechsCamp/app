@@ -98,7 +98,7 @@
 - (void)setupAccelerometer{
     if (_motionManager.accelerometerAvailable){
         // センサーの更新間隔の指定
-        _motionManager.accelerometerUpdateInterval = 0.5f;
+        _motionManager.accelerometerUpdateInterval = 0.02f;
         [_motionManager setUpHandler:self];
         
         // 加速度の取得開始
@@ -143,6 +143,7 @@
 
 -(void)tapItemAction:(NSString *)index {
     self.selected_item = [self.use_items_top objectForKey:index];
+    [_motionManager setSelectedItem:self.selected_item];
     // selected_itemが選択されているsoundId
     
     // 選択されたデータを変更

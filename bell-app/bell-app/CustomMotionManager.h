@@ -28,5 +28,6 @@
 -(CMAccelerometerHandler)handler;
 -(void)actSound;
 -(void)resetCount;
+-(void)setSelectedItem:(NSString*)item;
 
 @end

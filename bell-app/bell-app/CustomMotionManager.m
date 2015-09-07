@@ -25,6 +25,10 @@
     
     int vectorCount;
     
+    NSString* selectedItem;
+    BOOL start;
+    
+    
 }
 
 //
@@ -104,15 +108,15 @@ const int Threshold = 15;
         accelY = [self tendToZero:accelY];
         accelZ = [self tendToZero:accelZ];
         
-        //UIAccelerationValue vector = accelY;
-        UIAccelerationValue vector = sqrt(pow(accelX,2)+pow(accelY,2)+pow(accelZ, 2));
+        UIAccelerationValue vector = accelY;
+        //UIAccelerationValue vector = sqrt(pow(accelX,2)+pow(accelY,2)+pow(accelZ, 2));
         UIAccelerationValue acce = vector - prevVelocity;
         UIAccelerationValue velocity = (((acce - prevAcce)/2) * (1/kAccelerometerFrequency)) + prevVelocity;
         
 
         NSLog(@"X %g Y %g Z %g, Vector %g, Velocity %g",accelX,accelY,accelZ,vector,velocity);
-        
-        if(vector >= 10){
+
+        if([weakself start]){
             [weakself increaseVectorCount];
         }
         
@@ -127,25 +131,41 @@ const int Threshold = 15;
 
 }
 
+-(void)setSelectedItem:(NSString*)item{
+    
+    selectedItem = item;
+    
+}
+
+-(BOOL)start{
+    return start;
+}
+
 -(void)resetCount{
     vectorCount = 0;
+    start = true;
 }
 
 -(void)actSound{
     
-    if(vectorCount >= 15){
-        NSLog(@"sound:1 vectorCount = %d",vectorCount);
-    }else{
-        NSLog(@"sound:2");
+    int soundRecognizeNum = 1;
+    if(vectorCount >= 25){
+        soundRecognizeNum = 2;
+        //NSLog(@"sound:1 vectorCount = %d",vectorCount);
     }
     
+    vectorCount = 0;
     //３つあるうちのどの音を出すかを判別する数字を取得（上:1,中:2,下:3)
     //音仮当て
-    int soundRecognizeNum = 1;//[RecognizePhoneWave DecideSoundbyWave:xac Y:yac Z:zac];
+    //int soundRecognizeNum = 1;//[RecognizePhoneWave DecideSoundbyWave:xac Y:yac Z:zac];
     
     //サウンドIDの取得
-    NSString* soundid = @"1";
-
+    NSString* soundid;
+    if(selectedItem){
+        soundid = selectedItem;
+    }else{
+        soundid = @"1";
+    }
     //[self stopSoundAfterDeley:SOUNDTIME];
     NSURL* soundUrl = [GetAudioSound getSoundURL:soundid MP3Num:[[NSNumber numberWithInt:soundRecognizeNum] stringValue]];
     [self playSound:soundUrl];
