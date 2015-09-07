@@ -34,10 +34,70 @@
     screenFrame = self.view.bounds.size;
     _motionManager = [[CustomMotionManager alloc] init];
     
+    NSArray* array = [Instruments MR_findAll];
+    if(array.count == 0) {
+        [self setDefaultDownloadSetting];
+    }
+    
+    [self setButtonLayout];
+    
 }
+
+
+
+-(void)setDefaultDownloadSetting {
+    
+    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+    
+    NSLog(@"%@",[ud objectForKey:@"D1"]);
+    NSLog(@"%@",[ud objectForKey:@"D2"]);
+    NSLog(@"%@",[ud objectForKey:@"D3"]);
+    
+    
+    //初期データダウンロード
+    if([ud objectForKey:@"D1"] == false) {
+        [DownLoadSoundZipData downloadZipData:@"1" SUCCESS:^(BOOL success) {
+            NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+            [ud setBool:true forKey:@"D1"];
+            [ud synchronize];
+        }];
+    }
+    
+    if([ud objectForKey:@"D2"] == false) {
+        [DownLoadSoundZipData downloadZipData:@"2" SUCCESS:^(BOOL success) {
+            NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+            [ud setBool:true forKey:@"D2"];
+            [ud synchronize];
+        }];
+    }
+    
+    if([ud objectForKey:@"D3"] == false) {
+        [DownLoadSoundZipData downloadZipData:@"3" SUCCESS:^(BOOL success) {
+            NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+            [ud setBool:true forKey:@"D3"];
+            [ud synchronize];
+        }];
+    }
+    
+    NSArray* array = @[@"1",@"2",@"3"];
+    [ud setObject:array forKey:@"SoundID"];
+    [ud synchronize];
+
+}
+
+
+
+
+
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    _shakeImage.alpha = 1.0f;
+    
+    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+    [self setSelected_item:[ud objectForKey:@"SelectedItem"]];
     
     [self setSelectedItems];
     
@@ -49,6 +109,24 @@
 
 }
 
+
+-(void)setButtonLayout {
+    _item_1.layer.borderColor = [[UIColor grayColor] CGColor];
+    _item_1.layer.borderWidth = 1.0f;
+    _item_1.layer.cornerRadius = 5.0f;
+    
+    _item_2.layer.borderColor = [[UIColor grayColor] CGColor];
+    _item_2.layer.borderWidth = 1.0f;
+    _item_2.layer.cornerRadius = 5.0f;
+    
+    _item_3.layer.borderColor = [[UIColor grayColor] CGColor];
+    _item_3.layer.borderWidth = 1.0f;
+    _item_3.layer.cornerRadius = 5.0f;
+    
+}
+
+
+
 -(void)ShowItemButton {
     // 画像を呼ぶ
     NSDictionary *use_items = self.use_items_top;
@@ -56,9 +134,18 @@
     Instruments *item_2 = [Instruments MR_findFirstByAttribute:@"id" withValue:use_items[@"2"]];
     Instruments *item_3 = [Instruments MR_findFirstByAttribute:@"id" withValue:use_items[@"3"]];
     
-    [self.item_1 setImage:[self returnImage:item_1.image_url] forState:UIControlStateNormal];
-    [self.item_2 setImage:[self returnImage:item_2.image_url] forState:UIControlStateNormal];
-    [self.item_3 setImage:[self returnImage:item_3.image_url] forState:UIControlStateNormal];
+    if(item_1.image_url != nil) {
+        [self.item_1 setImage:[self returnImage:item_1.image_url] forState:UIControlStateNormal];
+        [self.item_2 setImage:[self returnImage:item_2.image_url] forState:UIControlStateNormal];
+        [self.item_3 setImage:[self returnImage:item_3.image_url] forState:UIControlStateNormal];
+        
+    }else {
+        [self.item_1 setImage:[UIImage imageNamed:@"pian.png"] forState:UIControlStateNormal];
+        [self.item_2 setImage:[UIImage imageNamed:@"pian.png"]  forState:UIControlStateNormal];
+        [self.item_3 setImage:[UIImage imageNamed:@"pian.png"]  forState:UIControlStateNormal];
+        
+    }
+
     
     // 選択されてるやつは光る
     if ([self.selected_item isEqual:@"1"]) [self.item_1 setBackgroundColor:[UIColor yellowColor]];
@@ -116,9 +203,9 @@
     } else {
         // 初回起動時はデフォルト値を保存
         NSDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                    @0,@"1",
-                                    @1,@"2",
-                                    @2,@"3",
+                                    @1,@"1",
+                                    @2,@"2",
+                                    @3,@"3",
                                 nil];
         self.use_items_top = [dic mutableCopy];
         [defaults setObject:dic forKey:@"use_items"];
@@ -146,9 +233,36 @@
     [_motionManager setSelectedItem:self.selected_item];
     // selected_itemが選択されているsoundId
     
+    [self makeSelectedItemYellow:index];
+    
+    
     // 選択されたデータを変更
     // self.selected_item(string) が選んでる番号
 }
+
+
+-(void)makeSelectedItemYellow:(NSString*)index {
+    
+    [_item_1 setBackgroundColor:[UIColor whiteColor]];
+    [_item_2 setBackgroundColor:[UIColor whiteColor]];
+    [_item_3 setBackgroundColor:[UIColor whiteColor]];
+    
+    if([index isEqualToString:@"1"]){
+        [_item_1 setBackgroundColor:[UIColor yellowColor]];
+    }
+    if([index isEqualToString:@"2"]){
+        [_item_2 setBackgroundColor:[UIColor yellowColor]];
+    }
+    if([index isEqualToString:@"3"]){
+        [_item_3 setBackgroundColor:[UIColor yellowColor]];
+    }
+    
+    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:index forKey:@"SelectedItem"];
+    [ud synchronize];
+}
+
+
 
 
 
@@ -174,6 +288,7 @@
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 
 {
+    _shakeImage.alpha = 0.0f;
     
     if(event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake)
         
@@ -202,6 +317,7 @@
         [_motionManager resetCount];
         
     }
+
     
 }
 

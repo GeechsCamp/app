@@ -22,17 +22,30 @@
     self.download.contentMode = UIViewContentModeScaleAspectFit;
     self.download.enabled = NO;
     
-    //string系の表示
-    NSLog(@"%@",instrument.name);
-    
     self.nameLabel.text = instrument.name;
     //self.descriptionLabel.text = instrument.detail;
     self.categoryLabel.text = instrument.category_name;
+    self.categoryLabel.textColor = [UIColor grayColor];
     
     // 使用中の楽器dicのidと照合してif分岐
-    self.statusLabel.text = @"now setting";
-
+    NSUserDefaults* ud =[NSUserDefaults standardUserDefaults];
+    NSDictionary* dic = [ud objectForKey:@"use_items"];
+    int i;
+    for(i=1; i <= dic.count; i++) {
+        NSString* key = [NSString stringWithFormat:@"%d",i];
+        NSString* settingID = [NSString stringWithFormat:@"%@",[dic objectForKey:key]];
+        NSString* instrument_id = instrument.id;
+        NSLog(@"%@",settingID);
+        NSLog(@"%@",instrument_id);
+        
+        if([settingID isEqualToString:instrument_id]) {
+            self.statusLabel.text = @" now setting ";
+        }
+    }
+    self.statusLabel.textColor = [UIColor whiteColor];
+    self.statusLabel.backgroundColor = [UIColor redColor];
     
+
     // カテゴリDBと照合して表示(色も変える?)
     
     // 画像の表示 SDWebimage的処理したい

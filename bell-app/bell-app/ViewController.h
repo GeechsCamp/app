@@ -32,5 +32,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *item_3;
 - (IBAction)tapItem_3:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *shakeImage;
+
+
 @end
 

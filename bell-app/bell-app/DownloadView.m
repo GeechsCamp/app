@@ -16,7 +16,6 @@
 
 @interface DownloadView ()
 
-
 @end
 
 @implementation DownloadView
@@ -26,7 +25,13 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [self setSelectedItems];
-    [self CreateAllSoundsLocalData];
+    
+    NSArray* array = [Instruments MR_findAll];
+    if(array.count == 0) {
+
+         [self CreateAllSoundsLocalData];
+    }
+   
 
 }
 
@@ -100,7 +105,7 @@
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     }
     NSLog(@"ローカルデータ==%@",self.datas);
-    
+
 }
 
 
@@ -132,8 +137,8 @@
 
     DownloadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"downloadCell" forIndexPath:indexPath];
     
-    NSArray* array = [Instruments MR_findAll];
-    Instruments* instrument = [array objectAtIndex:indexPath.row];
+    NSArray* JsonArray = [Instruments MR_findAll];
+    Instruments* instrument = [JsonArray objectAtIndex:indexPath.row];
     NSLog(@"名前=%@",instrument.name);
     [cell setDataOfRow:instrument];
     
